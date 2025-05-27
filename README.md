@@ -1,5 +1,5 @@
 # Scheduling System (WPF Application)
-This is a windows desktop scheduling application built with **C#** and **WPF**.
+This is a windows scheduling desktop user interface application built with .NET **Windows Presentation Foundation (WPF)** framework.
 
 *More details coming soon.*
 
