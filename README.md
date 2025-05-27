@@ -3,8 +3,11 @@ This is a windows scheduling desktop user interface application built with .NET 
 
 *More details coming soon.*
 
-**Note:**
-This application was developed for a **school project** with **Visual Studio 2022** on a **Windows 11 (Virtual Machine)** using **Parallels Desktop** on a **Macbook**.
+
+#### Notes:
+1. This application was developed for a **school project** with **Visual Studio 2022** on a **Windows 11 (Virtual Machine)** using **Parallels Desktop** on a **Macbook**.
+2. This project uses a local MySQL connection defined in `App.config`, which is ignored from version control for security.  
+To run the project locally, add your own connection string to `App.config`.
 <br>
 
 ## Features
@@ -27,6 +30,9 @@ This application was developed for a **school project** with **Visual Studio 202
 | ![EER Diagram](screenshots/client_schedule_diagram_screenshot.png) |
 
 <br>
+
+
+
 
 ### Author
 Tonyruizo
