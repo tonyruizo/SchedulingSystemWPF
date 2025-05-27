@@ -22,3 +22,5 @@ Thumbs.db
 # Debug/Release folders
 **/bin/Debug/
 **/bin/Release/
+
+/SchedulingSystemWPF/App.config
