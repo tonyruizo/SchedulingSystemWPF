@@ -11,7 +11,8 @@ To run the project locally, add your own connection string to `App.config`.
 <br>
 
 ## Features
-*Details coming soon.*
+-  **MVVM (Model-View-ViewModel) architecture**
+- *Details coming soon.*
 
 <br>
 
