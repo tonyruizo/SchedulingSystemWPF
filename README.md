@@ -11,7 +11,11 @@ To run the project locally, add your own connection string to `App.config`.
 <br>
 
 ## Features
--  **MVVM (Model-View-ViewModel) architecture**
+-  **MVVM** (Model-View-ViewModel) Architecture
+- Low-Level Data Access with **ADO.NET** using SQL Queries 
+- *More Details coming soon.*
+
+#### In App Features:
 - *Details coming soon.*
 
 <br>
@@ -20,8 +24,8 @@ To run the project locally, add your own connection string to `App.config`.
 
 - **C#**
 - **WPF APP (.NET Framework 4.7.2)**
-- **MySQL**
-- *More details coming soon*
+- **ADO.NET** 
+- **MySQL** 
 
 <br>
 
