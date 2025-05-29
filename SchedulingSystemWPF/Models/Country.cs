@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace SchedulingSystemWPF.Models
+﻿namespace SchedulingSystemWPF.Models
 {
     /// <summary>
     /// A Customer's country.
@@ -8,9 +6,6 @@ namespace SchedulingSystemWPF.Models
     public class Country : ScheduleLoggin
     {
         public int CountryId { get; set; }
-
-        [Required]
-        [StringLength(50)]
         public string CountryName { get; set; }
 
     }

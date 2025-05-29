@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace SchedulingSystemWPF.Models
 {
@@ -9,15 +8,8 @@ namespace SchedulingSystemWPF.Models
     public abstract class ScheduleLoggin
     {
         public DateTime CreateDate { get; set; }
-
-        [Required]
-        [StringLength(40)]
         public string CreatedBy { get; set; }
-
         public DateTime LastUpdate { get; set; }
-
-        [Required]
-        [StringLength(40)]
         public string LastUpdateBy { get; set; }
     }
 }
