@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchedulingSystemWPF"
         mc:Ignorable="d"
-        Title="Scheduling System 2025" Height="450" Width="800">
+        Title="GCA Schedule System" Height="450" Width="800">
     <Grid>
-        
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

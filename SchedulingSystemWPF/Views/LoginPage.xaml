@@ -1,0 +1,42 @@
+﻿<Page x:Class="SchedulingSystemWPF.Views.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SchedulingSystemWPF.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LoginPage" Background="White">
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
+        <!-- Heading -->
+        <TextBlock Text="Global Consulting Agency" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,5" 
+                   HorizontalAlignment="Center"/>
+        
+        <!-- SubHeading -->
+        <TextBlock Text="Schedule System" 
+           FontSize="18" 
+           FontWeight="Bold" 
+           Margin="0,0,0,35" 
+           HorizontalAlignment="Center"/>
+        
+        <!-- Description -->
+        <TextBlock FontSize="15" Margin="0,0,0,40" HorizontalAlignment="Center" TextAlignment="Center">
+            Only authorized users.
+            <LineBreak />
+            Please enter your login username and password.
+        </TextBlock>
+
+        <!-- Login form -->
+        <StackPanel Width="250">
+            <TextBlock Text="Username"/>
+            <TextBox x:Name="UsernameBox" Margin="0,0,0,10"/>
+            <TextBlock Text="Password"/>
+            <PasswordBox x:Name="PasswordBox" Margin="0,0,0,10"/>
+            <Button Content="Login" Margin="0,0,0,10" Click="Login_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Page>
