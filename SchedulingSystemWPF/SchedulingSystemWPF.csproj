@@ -87,6 +87,8 @@
     </Compile>
     <Compile Include="DatabaseAccess\AppointmentRepository.cs" />
     <Compile Include="DatabaseAccess\DbConnect.cs" />
+    <Compile Include="DatabaseAccess\UserRepository.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="Views\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
@@ -132,8 +134,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
