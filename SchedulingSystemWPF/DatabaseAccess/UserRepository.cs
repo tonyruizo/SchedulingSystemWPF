@@ -12,7 +12,7 @@ namespace SchedulingSystemWPF.DatabaseAccess
         /// </summary>
         /// <param name="username">The login username</param>
         /// <param name="password">The login password</param>
-        /// <returns></returns>
+        /// <returns>True or False</returns>
         public bool ValidateUser(string username, string password)
         {
             try
@@ -22,9 +22,9 @@ namespace SchedulingSystemWPF.DatabaseAccess
                     conn.Open();
 
                     // SQL Query
-                    string query = "SELECT COUNT(*) FROM user WHERE userName = @username AND password = @password";
+                    string cmdQuery = "SELECT COUNT(*) FROM user WHERE userName = @username AND password = @password";
 
-                    using (var cmd = new MySqlCommand(query, conn))
+                    using (var cmd = new MySqlCommand(cmdQuery, conn))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
                         cmd.Parameters.AddWithValue("@password", password);

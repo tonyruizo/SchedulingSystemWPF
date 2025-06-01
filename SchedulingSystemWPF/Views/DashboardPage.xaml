@@ -8,27 +8,33 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DashboardPage" Background="White">
 
-    <Grid Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Navbar -->
+            <RowDefinition Height="*" />
+            <!-- Main Content -->
+        </Grid.RowDefinitions>
 
-        <TextBlock 
-            Text="GCA Dashboard"
-            FontSize="15"
-            FontWeight="DemiBold"
-            Padding="0,5,0,0"
-            HorizontalAlignment="Left"
-            Grid.Column="0"/>
+        <!-- Navbar -->
+        <Border Grid.Row="0" BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="10">
+            <Grid Width="700">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-        <TextBlock 
-            Text="{Binding WelcomeUser}"
-            FontSize="15"
-            FontWeight="DemiBold"
-            Padding="0,5,0,0"
-            HorizontalAlignment="Right"
-            Grid.Column="1"/>
+                <TextBlock Text="GCA Dashboard" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Grid.Column="0" />
+                <TextBlock Text="{Binding WelcomeUser}" FontSize="14" VerticalAlignment="Center" Margin="20,0, 20, 0" Grid.Column="1" />
+                <Button Content="Logout" Grid.Column="1" Click="Logout_Click" Grid.ColumnSpan="2" Margin="80,1,0,0"/>
+            </Grid>
+        </Border>
+
+        <!-- main content -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="20,0,20,388">
+            <!-- content -->
+        </StackPanel>
     </Grid>
-    
+
 </Page>

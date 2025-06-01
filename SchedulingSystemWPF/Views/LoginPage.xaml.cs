@@ -27,7 +27,8 @@ namespace SchedulingSystemWPF.Views
 
             if (userR.ValidateUser(username, password))
             {
-                _mainFrame.Navigate(new DashboardPage(username));
+                // If true, navigate to authorized dashboard page
+                _mainFrame.Navigate(new DashboardPage(username, _mainFrame));
             }
             else
             {
