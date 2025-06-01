@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using SchedulingSystemWPF.DatabaseAccess;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace SchedulingSystemWPF.Views
 {
@@ -17,9 +19,20 @@ namespace SchedulingSystemWPF.Views
 
         private void Login_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            // Assign TextBox values to variables for validation
             string username = UsernameBox.Text;
             string password = PasswordBox.Password;
 
+            var userR = new UserRepository();
+
+            if (userR.ValidateUser(username, password))
+            {
+                _mainFrame.Navigate(new DashboardPage(username));
+            }
+            else
+            {
+                MessageBox.Show("Invalid credentials. Please try again.");
+            }
         }
     }
 }
