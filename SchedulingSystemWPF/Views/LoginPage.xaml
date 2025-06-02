@@ -9,34 +9,34 @@
       Title="LoginPage" Background="White">
 
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
-        <!-- Heading -->
+        <!--Heading-->
         <TextBlock Text="Global Consulting Agency" 
                    FontSize="24" 
                    FontWeight="Bold" 
                    Margin="0,0,0,5" 
                    HorizontalAlignment="Center"/>
-        
-        <!-- SubHeading -->
+
+        <!--SubHeading-->
         <TextBlock Text="Schedule System" 
            FontSize="18" 
            FontWeight="Bold" 
            Margin="0,0,0,35" 
            HorizontalAlignment="Center"/>
-        
-        <!-- Description -->
+
+        <!--Description-->
         <TextBlock FontSize="15" Margin="0,0,0,40" HorizontalAlignment="Center" TextAlignment="Center">
             Only authorized users.
             <LineBreak />
             Please enter your login username and password.
         </TextBlock>
 
-        <!-- Login form -->
+        <!--Login form-->
         <StackPanel Width="250">
             <TextBlock Text="Username"/>
             <TextBox x:Name="UsernameBox" Margin="0,0,0,10"/>
             <TextBlock Text="Password"/>
             <PasswordBox x:Name="PasswordBox" Margin="0,0,0,10"/>
-            <Button Content="Login" Margin="0,0,0,10" Click="Login_Click"/>
+            <Button Content="Login" Margin="0,0,0,10" Click="Login_Click" Cursor="Hand" Style="{StaticResource PrimaryButton}"/>
         </StackPanel>
     </StackPanel>
 </Page>

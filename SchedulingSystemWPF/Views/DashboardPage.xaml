@@ -11,12 +11,12 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <!-- Navbar -->
+            <!--Navbar-->
             <RowDefinition Height="*" />
-            <!-- Main Content -->
+            <!--Main Content-->
         </Grid.RowDefinitions>
 
-        <!-- Navbar -->
+        <!--Navbar-->
         <Border Grid.Row="0" BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="10">
             <Grid Width="700">
                 <Grid.ColumnDefinitions>
@@ -27,7 +27,7 @@
 
                 <TextBlock Text="GCA Dashboard" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Grid.Column="0" />
                 <TextBlock Text="{Binding WelcomeUser}" FontSize="14" VerticalAlignment="Center" Margin="20,0, 20, 0" Grid.Column="1" />
-                <Button Content="Logout" Grid.Column="1" Click="Logout_Click" Grid.ColumnSpan="2" Margin="80,1,0,0"/>
+                <Button Content="Logout" Grid.Column="1" Click="Logout_Click" Grid.ColumnSpan="2" Margin="80,1,0,0" Style="{StaticResource PrimaryButton}"  Cursor="Hand"/>
             </Grid>
         </Border>
 
