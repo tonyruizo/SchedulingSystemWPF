@@ -1,9 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Windows;
 
 namespace SchedulingSystemWPF.DatabaseAccess
 {
     /// <summary>
-    /// A repository handles all operations related to the 'User' table in the MySQL database.
+    /// A repository handles all operations related to the 'user' table in the MySQL database.
     /// </summary>
     public class UserRepository
     {
@@ -35,10 +36,12 @@ namespace SchedulingSystemWPF.DatabaseAccess
                     }
                 }
             }
-            catch (MySqlException ex)
+            catch
             {
-                throw ex;
+                MessageBox.Show("Sorry! Internal error, please try again later.");
+                return false;
             }
+
         }
     }
 }
