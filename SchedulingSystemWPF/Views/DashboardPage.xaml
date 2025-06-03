@@ -3,20 +3,21 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SchedulingSystemWPF.Views"
+      xmlns:local="clr-namespace:SchedulingSystemWPF.Views" xmlns:viewmodels="clr-namespace:SchedulingSystemWPF.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DashboardViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DashboardPage" Background="White">
 
     <Grid>
         <Grid.RowDefinitions>
+            <!--Navbar Height for Row 0-->
             <RowDefinition Height="Auto" />
-            <!--Navbar-->
+
+            <!--Main Content Height for Row 1-->
             <RowDefinition Height="*" />
-            <!--Main Content-->
         </Grid.RowDefinitions>
 
-        <!--Navbar-->
+        <!--Navbar Row 0-->
         <Border Grid.Row="0" BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="10">
             <Grid Width="700">
                 <Grid.ColumnDefinitions>
@@ -31,10 +32,10 @@
             </Grid>
         </Border>
 
-        <!-- main content -->
-        <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="20,0,20,388">
-            <!-- content -->
-        </StackPanel>
+        <!--Main Content Row 1-->
+        <ContentControl x:Name="MainContent" Grid.Row="1">
+         <!--Dynamic loaded content-->
+        </ContentControl>
     </Grid>
 
 </Page>

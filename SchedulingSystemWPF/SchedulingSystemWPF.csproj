@@ -69,6 +69,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\DashboardOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DashboardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -86,9 +90,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatabaseAccess\AppointmentRepository.cs" />
+    <Compile Include="DatabaseAccess\CustomerRepository.cs" />
     <Compile Include="DatabaseAccess\DbConnect.cs" />
     <Compile Include="DatabaseAccess\UserRepository.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="Views\DashboardOptions.xaml.cs">
+      <DependentUpon>DashboardOptions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
@@ -132,7 +140,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Views\App.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

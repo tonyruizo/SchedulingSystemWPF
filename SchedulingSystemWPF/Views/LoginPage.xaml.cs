@@ -17,7 +17,7 @@ namespace SchedulingSystemWPF.Views
             _mainFrame = mainFrame;
         }
 
-        private void Login_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
             // Assign TextBox values to variables for validation
             string username = UsernameBox.Text;
@@ -25,15 +25,24 @@ namespace SchedulingSystemWPF.Views
 
             var userR = new UserRepository();
 
-            if (userR.ValidateUser(username, password))
+            if (!string.IsNullOrEmpty(username) || !string.IsNullOrEmpty(password))
             {
-                // If true, navigate to authorized dashboard page
-                _mainFrame.Navigate(new DashboardPage(username, _mainFrame));
+                if (userR.ValidateUser(username, password))
+                {
+                    // If true, navigate to authorized dashboard page
+                    _mainFrame.Navigate(new DashboardPage(username, _mainFrame));
+                }
+                else
+                {
+                    MessageBox.Show("Invalid credentials. Please try again.");
+                }
             }
             else
             {
-                MessageBox.Show("Invalid credentials. Please try again.");
+                MessageBox.Show("Please fill out BOTH username and password.");
             }
+
         }
+
     }
 }

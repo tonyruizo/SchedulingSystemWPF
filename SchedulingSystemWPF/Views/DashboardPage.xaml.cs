@@ -14,6 +14,9 @@ namespace SchedulingSystemWPF.Views
             InitializeComponent();
             _mainFrame = mainframe;
             DataContext = new ViewModels.DashboardViewModel(username);
+
+            // Load Dashboard options view
+            MainContent.Content = new DashboardOptions();
         }
 
         public void Logout_Click(object sender, RoutedEventArgs e)
@@ -26,5 +29,7 @@ namespace SchedulingSystemWPF.Views
             }
 
         }
+
+
     }
 }
