@@ -8,29 +8,43 @@ namespace SchedulingSystemWPF.Views
     /// </summary>
     public partial class DashboardOptions : UserControl
     {
-        public DashboardOptions()
+        private readonly ContentControl _mainContent;
+        public DashboardOptions(ContentControl mainContent)
         {
             InitializeComponent();
+            _mainContent = mainContent;
         }
 
+        /// <summary>
+        /// Display all appointments
+        /// </summary>
         private void ViewAllAppointments_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Clicked show all appointments");
+            _mainContent.Content = new AppointmentsView(_mainContent);
         }
 
-        private void ViewAllCustomers_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Clicked show all customers");
-        }
+        ///// <summary>
+        ///// Display all customers
+        ///// </summary>
+        //private void ViewAllCustomers_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBox.Show("Clicked show all customers");
+        //}
 
-        private void AddAppointment_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Clicked add new appointment.");
-        }
+        ///// <summary>
+        ///// Add a new appointment
+        ///// </summary>
+        //private void AddAppointment_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBox.Show("Clicked add new appointment.");
+        //}
 
-        private void AddCustomer_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Clicked add new customer.");
-        }
+        ///// <summary>
+        ///// Add a new customer
+        ///// </summary>
+        //private void AddCustomer_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBox.Show("Clicked add new customer.");
+        //}
     }
 }
