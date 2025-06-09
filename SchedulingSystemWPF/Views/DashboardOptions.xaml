@@ -18,7 +18,7 @@
         </StackPanel>
 
         <StackPanel Width="250">
-            <Button Content="View All Customers" Margin="0 0 0 10" Cursor="Hand" Style="{StaticResource SecondaryButton}"/>
+            <Button Content="View All Customers" Click="ViewAllCustomers_Click" Margin="0 0 0 10" Cursor="Hand" Style="{StaticResource SecondaryButton}"/>
         </StackPanel>
 
         <StackPanel Width="250" Margin="0 15 0 0">

@@ -34,7 +34,7 @@ namespace SchedulingSystemWPF.Views
                 }
                 else
                 {
-                    MessageBox.Show("Invalid credentials. Please try again.");
+                    MessageBox.Show("The username and password do not match. Please try again.");
                 }
             }
             else

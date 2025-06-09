@@ -34,7 +34,7 @@
                     <DataGridTextColumn Header="Url" Binding="{Binding Url}" />
                     <DataGridTextColumn Header="Start" Binding="{Binding Start}" />
                     <DataGridTextColumn Header="End" Binding="{Binding End}" />
-                    <DataGridTextColumn Header="Create On" Binding="{Binding CreateDate}" />
+                    <DataGridTextColumn Header="Created On" Binding="{Binding CreateDate}" />
                     <DataGridTextColumn Header="Created By" Binding="{Binding CreatedBy}" />
                     <DataGridTextColumn Header="Last Updated" Binding="{Binding LastUpdate}" />
                     <DataGridTextColumn Header="Updated By" Binding="{Binding LastUpdateBy}" />

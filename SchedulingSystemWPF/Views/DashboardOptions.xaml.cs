@@ -23,13 +23,13 @@ namespace SchedulingSystemWPF.Views
             _mainContent.Content = new AppointmentsView(_mainContent);
         }
 
-        ///// <summary>
-        ///// Display all customers
-        ///// </summary>
-        //private void ViewAllCustomers_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MessageBox.Show("Clicked show all customers");
-        //}
+        /// <summary>
+        /// Display all customers
+        /// </summary>
+        private void ViewAllCustomers_Click(object sender, RoutedEventArgs e)
+        {
+            _mainContent.Content = new CustomersView(_mainContent);
+        }
 
         ///// <summary>
         ///// Add a new appointment
