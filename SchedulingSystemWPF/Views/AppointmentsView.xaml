@@ -8,14 +8,16 @@
              d:DesignHeight="450" d:DesignWidth="800" Background="white">
     
     <Grid Margin="10">
+        
         <StackPanel>
             
             <!--Heading-->
-            <TextBlock Text="Appointments" 
-           FontSize="15" 
-           FontWeight="DemiBold" 
-           Margin="0,0,0,10"
-           HorizontalAlignment="Center"/>
+            <TextBlock 
+                Text="Appointments" 
+                FontSize="15" 
+                FontWeight="DemiBold" 
+                Margin="0,0,0,10"
+                HorizontalAlignment="Center"/>
             
             <!--Data-->
             <DataGrid x:Name="AppointmentGrid"
@@ -25,9 +27,17 @@
                       Margin="0,0,0,10">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
+                    <DataGridTextColumn Header="Location" Binding="{Binding Location}" />
+                    <DataGridTextColumn Header="Contact" Binding="{Binding Contact}" />
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+                    <DataGridTextColumn Header="Url" Binding="{Binding Url}" />
                     <DataGridTextColumn Header="Start" Binding="{Binding Start}" />
                     <DataGridTextColumn Header="End" Binding="{Binding End}" />
-                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+                    <DataGridTextColumn Header="Create On" Binding="{Binding CreateDate}" />
+                    <DataGridTextColumn Header="Created By" Binding="{Binding CreatedBy}" />
+                    <DataGridTextColumn Header="Last Updated" Binding="{Binding LastUpdate}" />
+                    <DataGridTextColumn Header="Updated By" Binding="{Binding LastUpdateBy}" />
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -55,5 +65,6 @@
                 
             </Grid>
         </StackPanel>
+        
     </Grid>
 </UserControl>

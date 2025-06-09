@@ -20,9 +20,6 @@ namespace SchedulingSystemWPF.Views
             LoadAppointments();
         }
 
-        /// <summary>
-        /// Display appointments.
-        /// </summary>
         private void LoadAppointments()
         {
             List<Appointment> appointments = _appointmentRepo.GetAllAppointments();
