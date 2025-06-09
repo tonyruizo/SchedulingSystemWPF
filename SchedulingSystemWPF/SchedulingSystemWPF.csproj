@@ -69,6 +69,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\AddAppointmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddCustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AppointmentsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +115,12 @@
       <DependentUpon>Lang.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="Views\AddAppointmentView.xaml.cs">
+      <DependentUpon>AddAppointmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddCustomerView.xaml.cs">
+      <DependentUpon>AddCustomerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AppointmentsView.xaml.cs">
       <DependentUpon>AppointmentsView.xaml</DependentUpon>
     </Compile>

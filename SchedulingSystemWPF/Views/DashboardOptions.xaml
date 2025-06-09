@@ -22,11 +22,11 @@
         </StackPanel>
 
         <StackPanel Width="250" Margin="0 15 0 0">
-            <Button Content="Add New Appointment" Margin="0 0 0 10" Cursor="Hand" Style="{StaticResource SecondaryButton}"/>
+            <Button Content="Add New Appointment" Click="AddAppointment_Click"  Margin="0 0 0 10" Cursor="Hand" Style="{StaticResource SecondaryButton}"/>
         </StackPanel>
 
         <StackPanel Width="250">
-            <Button Content="Add New Customer" Margin="0 0 0 10" Cursor="Hand" Style="{StaticResource SecondaryButton}"/>
+            <Button Content="Add New Customer" Click="AddCustomer_Click"  Margin="0 0 0 10" Cursor="Hand" Style="{StaticResource SecondaryButton}"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

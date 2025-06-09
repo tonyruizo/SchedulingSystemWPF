@@ -31,20 +31,20 @@ namespace SchedulingSystemWPF.Views
             _mainContent.Content = new CustomersView(_mainContent);
         }
 
-        ///// <summary>
-        ///// Add a new appointment
-        ///// </summary>
-        //private void AddAppointment_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MessageBox.Show("Clicked add new appointment.");
-        //}
+        /// <summary>
+        /// Add a new appointment
+        /// </summary>
+        private void AddAppointment_Click(object sender, RoutedEventArgs e)
+        {
+            _mainContent.Content = new AddAppointmentView(_mainContent);
+        }
 
-        ///// <summary>
-        ///// Add a new customer
-        ///// </summary>
-        //private void AddCustomer_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MessageBox.Show("Clicked add new customer.");
-        //}
+        /// <summary>
+        /// Add a new customer
+        /// </summary>
+        private void AddCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            _mainContent.Content = new AddCustomerView(_mainContent);
+        }
     }
 }
