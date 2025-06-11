@@ -27,7 +27,11 @@
                       Margin="0,0,0,10">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding CustomerName}"/>
-                    <DataGridTextColumn Header="Address" Binding="{Binding AddressId}"/>
+                    <DataGridTextColumn Header="Street Address" Binding="{Binding AddressLine1}"/>
+                    <DataGridTextColumn Header="Address Line 2" Binding="{Binding AddressLine2}"/>
+                    <DataGridTextColumn Header="City" Binding="{Binding City}"/>
+                    <DataGridTextColumn Header="Postal Code" Binding="{Binding PostalCode}"/>
+                    <DataGridTextColumn Header="Country" Binding="{Binding Country}"/>
                     <DataGridTextColumn Header="Active" Binding="{Binding Active}"/>
                     <DataGridTextColumn Header="Created On" Binding="{Binding CreateDate}"/>
                     <DataGridTextColumn Header="Created By" Binding="{Binding CreatedBy}"/>
