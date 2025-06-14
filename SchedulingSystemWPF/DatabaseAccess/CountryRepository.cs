@@ -42,9 +42,9 @@ namespace SchedulingSystemWPF.DatabaseAccess
                 // Insert new country and retrive Id
                 var insertCmd = new MySqlCommand(
                     @"INSERT INTO country (country, createDate, createdBy, lastUpdate, lastUpdateBy) 
-                      VALUES (@country, NOW(), @createdBy, NOW(), @createdBy);
-                      SELECT LAST_INSERT_ID();", conn
-                    );
+                    VALUES (@country, NOW(), @createdBy, NOW(), @createdBy);
+                    SELECT LAST_INSERT_ID();", conn
+                );
 
                 insertCmd.Parameters.AddWithValue("@country", countryName);
                 insertCmd.Parameters.AddWithValue("@createdBy", createdBy);

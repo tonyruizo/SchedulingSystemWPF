@@ -45,9 +45,9 @@ namespace SchedulingSystemWPF.DatabaseAccess
                 // Insert and retrive
                 var insertCmd = new MySqlCommand(
                     @"INSERT INTO city (city, countryId, createDate, createdBy, lastUpdate, lastUpdateBy)
-                  VALUES (@city, @countryId, NOW(), @createdBy, NOW(), @createdBy);
-                  SELECT LAST_INSERT_ID();", conn
-                  );
+                    VALUES (@city, @countryId, NOW(), @createdBy, NOW(), @createdBy);
+                    SELECT LAST_INSERT_ID();", conn
+                 );
 
                 insertCmd.Parameters.AddWithValue("@city", cityName);
                 insertCmd.Parameters.AddWithValue("@countryId", countryId);
