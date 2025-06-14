@@ -4,11 +4,9 @@ This is a windows scheduling desktop user interface application built with .NET 
 #### Scenario:
 An organization named “Global Consulting Agency” requires the development of a business Windows desktop application, utilizing their existing database.
 
-
 #### Notes:
 1. This application was developed for a **school project** with **Visual Studio 2022** on a **Windows 11 (Virtual Machine)** using **Parallels Desktop** on a **Macbook**.
 2. This project uses a local MySQL connection defined in `App.config`.
-<br>
 
 #### Technologies Used:
 - **C#**, **WPF APP (.NET Framework 4.7.2)**, **ADO.NET** and **MySQL**. 
