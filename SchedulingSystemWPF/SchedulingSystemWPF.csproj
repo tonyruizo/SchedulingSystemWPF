@@ -105,6 +105,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DatabaseAccess\AddressRepository.cs" />
     <Compile Include="DatabaseAccess\AppointmentRepository.cs" />
     <Compile Include="DatabaseAccess\CityRepository.cs" />
     <Compile Include="DatabaseAccess\CountryRepository.cs" />
