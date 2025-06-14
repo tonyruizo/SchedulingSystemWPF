@@ -1,4 +1,5 @@
 ﻿using SchedulingSystemWPF.DatabaseAccess;
+using SchedulingSystemWPF.Services;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -20,16 +21,21 @@ namespace SchedulingSystemWPF.Views
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             // Assign TextBox values to variables for validation
-            string username = UsernameBox.Text;
-            string password = PasswordBox.Password;
-
-            var userR = new UserRepository();
+            var username = UsernameBox.Text?.Trim();
+            var password = PasswordBox.Password?.Trim();
 
             if (!string.IsNullOrEmpty(username) || !string.IsNullOrEmpty(password))
             {
-                if (userR.ValidateUser(username, password))
+                var userR = new UserRepository();
+
+                var authenticatedUser = userR.ValidateUser(username, password);
+
+                if (authenticatedUser != null)
                 {
-                    // If true, navigate to authorized dashboard page
+                    // set current session for the user
+                    SessionManager.LoggedInUser = authenticatedUser;
+
+                    // Navigate to authorized dashboard page
                     _mainFrame.Navigate(new DashboardPage(username, _mainFrame));
                 }
                 else

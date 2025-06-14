@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using SchedulingSystemWPF.Models;
 using System.Collections.Generic;
-using System.Windows;
 
 namespace SchedulingSystemWPF.DatabaseAccess
 {
@@ -51,7 +50,7 @@ namespace SchedulingSystemWPF.DatabaseAccess
                         {
                             customers.Add(new Customer
                             {
-                                CustomerId = reader.GetInt32("customerid"),
+                                CustomerId = reader.GetInt32("customerId"),
                                 CustomerName = reader.GetString("customerName"),
                                 AddressId = reader.GetInt32("addressId"),
                                 AddressLine1 = reader.GetString("AddressLine1"),
@@ -79,13 +78,29 @@ namespace SchedulingSystemWPF.DatabaseAccess
         }
 
         /// <summary>
-        /// Add a new customer and add it to the database.
+        /// Add new customer data to the database.
         /// </summary>
-        public void AddCustomer(string customerName, string customerAddress)
+        public void AddCustomer(string nameInput, int addressId, string createdBy)
         {
             try
             {
-                MessageBox.Show($"Added  {customerName}, and {customerAddress}");
+                using (var conn = DbConnect.GetConnection())
+                {
+                    conn.Open();
+
+                    string cmdQuery = @"
+                        INSERT INTO customer(customerName, addressId, active, createDate, createdBy, lastUpdate, lastUpdateBy)
+                        VALUES (@nameInput, @addressId, 1, NOW(), @createdBy, NOW(), @createdBy)";
+
+                    using (var cmd = new MySqlCommand(cmdQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nameInput", nameInput);
+                        cmd.Parameters.AddWithValue("@addressId", addressId);
+                        cmd.Parameters.AddWithValue("@createdBy", createdBy);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
             }
             catch (MySqlException ex)
             {
