@@ -121,16 +121,28 @@ namespace SchedulingSystemWPF.DatabaseAccess
         //}
 
 
-        //public void DeleteCustomert()
-        //{
-        //    try
-        //    {
+        public void DeleteCustomer(int customerId)
+        {
+            try
+            {
+                using (var conn = DbConnect.GetConnection())
+                {
+                    conn.Open();
 
-        //    }
-        //    catch (MySqlException ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+                    string cmdQuery = @"DELETE FROM customer WHERE customerId = @customerId";
+
+                    using (var cmd = new MySqlCommand(cmdQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("customerId", customerId);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

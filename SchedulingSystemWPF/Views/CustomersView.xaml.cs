@@ -38,13 +38,31 @@ namespace SchedulingSystemWPF.Views
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Edit appointment");
+            MessageBox.Show("Edit customer");
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Delete appointment");
-        }
+            if (CustomerGrid.SelectedItem is Customer selectedCustomer)
+            {
+                int customerId = selectedCustomer.CustomerId;
 
+                var confirmDelete = MessageBox.Show("Are you sure you want to delete this customer?", "Confirm delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (confirmDelete == MessageBoxResult.Yes)
+                {
+                    var customerR = new CustomerRepository();
+
+                    customerR.DeleteCustomer(customerId);
+
+                    // Refresh Grid
+                    CustomerGrid.ItemsSource = customerR.GetAllCustomers();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a customer to delete.");
+            }
+        }
     }
 }
