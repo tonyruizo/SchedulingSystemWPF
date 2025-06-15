@@ -33,7 +33,7 @@ namespace SchedulingSystemWPF.Views
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Add new");
+            _parentContainer.Content = new AddAppointmentView(_parentContainer);
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)

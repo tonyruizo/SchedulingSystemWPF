@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:SchedulingSystemWPF.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="White">
-    
-    <Grid Margin="10">
+
+    <Grid Margin="10" VerticalAlignment="Center">
 
         <StackPanel HorizontalAlignment="Center" Width="500">
             
