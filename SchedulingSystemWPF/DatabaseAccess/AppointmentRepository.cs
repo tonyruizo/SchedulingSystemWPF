@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using SchedulingSystemWPF.Models;
+using SchedulingSystemWPF.ViewModels;
 using System.Collections.Generic;
 
 namespace SchedulingSystemWPF.DatabaseAccess
@@ -10,12 +11,12 @@ namespace SchedulingSystemWPF.DatabaseAccess
     public class AppointmentRepository
     {
         /// <summary>
-        /// Get all appointments from the Appointment table.
+        /// Get all appointments.
         /// </summary>
         /// <returns>A list of appointments.</returns>
-        public List<Appointment> GetAllAppointments()
+        public List<AppointmentsViewModel> GetAllAppointments()
         {
-            List<Appointment> appointments = new List<Appointment>();
+            List<AppointmentsViewModel> appointments = new List<AppointmentsViewModel>();
 
             try
             {
@@ -23,17 +24,21 @@ namespace SchedulingSystemWPF.DatabaseAccess
                 {
                     conn.Open();
 
-                    string query = "SELECT * FROM appointment";
+                    string query = @"
+                        SELECT a.*, c.customerName
+                        FROM appointment a
+                        JOIN customer c ON a.customerId = c.customerId";
 
                     using (var cmd = new MySqlCommand(query, conn))
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            appointments.Add(new Appointment
+                            appointments.Add(new AppointmentsViewModel
                             {
                                 AppointmentId = reader.GetInt32("appointmentId"),
                                 CustomerId = reader.GetInt32("customerId"),
+                                CustomerName = reader.GetString("customerName"),
                                 UserId = reader.GetInt32("userId"),
                                 Title = reader.GetString("title"),
                                 Description = reader.GetString("description"),
@@ -63,17 +68,17 @@ namespace SchedulingSystemWPF.DatabaseAccess
         /// <summary>
         /// Add a new appointment and add it to the database.
         /// </summary>
-        //    public void AddAppointment()
-        //    {
-        //        try
-        //        {
+        public void AddAppointment(Appointment appointment, string createdBy)
+        {
+            try
+            {
 
-        //        }
-        //        catch (MySqlException ex)
-        //        {
-        //            throw ex;
-        //        }
-        //    }
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+        }
 
         //public void EditAppointment()
         //{
