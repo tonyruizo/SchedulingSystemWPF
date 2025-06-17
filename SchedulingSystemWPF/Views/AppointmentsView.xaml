@@ -26,6 +26,7 @@
                       Height="200"
                       Margin="0,0,0,10">
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header="Customer" Binding="{Binding CustomerName}" />
                     <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
                     <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
                     <DataGridTextColumn Header="Location" Binding="{Binding Location}" />

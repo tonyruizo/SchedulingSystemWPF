@@ -1,5 +1,5 @@
 ﻿using SchedulingSystemWPF.DatabaseAccess;
-using SchedulingSystemWPF.Models;
+using SchedulingSystemWPF.ViewModels;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,7 +22,7 @@ namespace SchedulingSystemWPF.Views
 
         private void LoadAppointments()
         {
-            List<Appointment> appointments = _appointmentRepo.GetAllAppointments();
+            List<AppointmentsViewModel> appointments = _appointmentRepo.GetAllAppointments();
             AppointmentGrid.ItemsSource = appointments;
         }
 
