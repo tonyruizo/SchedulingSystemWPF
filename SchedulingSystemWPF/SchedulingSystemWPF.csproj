@@ -118,6 +118,7 @@
       <DependentUpon>Lang.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\SessionManager.cs" />
+    <Compile Include="ViewModels\AppointmentsViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="Views\AddAppointmentView.xaml.cs">
       <DependentUpon>AddAppointmentView.xaml</DependentUpon>

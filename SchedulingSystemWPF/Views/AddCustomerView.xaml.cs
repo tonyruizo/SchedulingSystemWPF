@@ -55,11 +55,11 @@ namespace SchedulingSystemWPF.Views
                 return;
             }
 
-            // Validation for phone format pattern (10-digits ignoring non-digits)
-            string phonePattern = @"^\D*(\d\D*){10}$";
+            // Validation for phone format pattern (7-digits ignoring non-digits)
+            string phonePattern = @"^\D*(\d\D*){7}$";
             if (!Regex.IsMatch(phoneInput, phonePattern))
             {
-                MessageBox.Show("Please enter a valid 10-digits phone number.");
+                MessageBox.Show("Please enter a valid 7-digits phone number.");
                 return;
             }
 
