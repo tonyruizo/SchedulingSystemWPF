@@ -99,7 +99,13 @@ namespace SchedulingSystemWPF.DatabaseAccess
                         cmd.Parameters.AddWithValue("@addressId", addressId);
                         cmd.Parameters.AddWithValue("@createdBy", createdBy);
 
-                        cmd.ExecuteNonQuery();
+                        int rowsAfected = cmd.ExecuteNonQuery();
+
+                        // Needs 1 row affected to ensure a new record added
+                        if (rowsAfected != 1)
+                        {
+                            throw new Exception("Failed to add a customer: No rows were inserted.");
+                        }
                     }
                 }
             }
@@ -136,13 +142,18 @@ namespace SchedulingSystemWPF.DatabaseAccess
                     {
                         cmd.Parameters.AddWithValue("customerId", customerId);
 
-                        cmd.ExecuteNonQuery();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected == 0)
+                        {
+                            throw new Exception($"No customer found with ID {customerId}.");
+                        }
                     }
                 }
             }
             catch (MySqlException ex)
             {
-                throw ex;
+                throw new Exception($"Failed to delete customer: {ex.Message}", ex);
             }
         }
     }

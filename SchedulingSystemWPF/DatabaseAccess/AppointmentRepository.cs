@@ -81,7 +81,7 @@ namespace SchedulingSystemWPF.DatabaseAccess
 
                     string cmdQuery = @"
                         INSERT INTO appointment(customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy)
-                        VALUE(@customerId, @userId, @title, @description,@location, @contact, @type, @url, @start, @end, NOW(), @createdBy, NOW(), @createdBy);";
+                        VALUES (@customerId, @userId, @title, @description,@location, @contact, @type, @url, @start, @end, NOW(), @createdBy, NOW(), @createdBy);";
 
                     using (var cmd = new MySqlCommand(cmdQuery, conn))
                     {
@@ -95,9 +95,15 @@ namespace SchedulingSystemWPF.DatabaseAccess
                         cmd.Parameters.AddWithValue("@url", appointment.Url);
                         cmd.Parameters.AddWithValue("@start", appointment.Start);
                         cmd.Parameters.AddWithValue("@end", appointment.End);
-                        cmd.Parameters.AddWithValue("@createdby", createdBy);
+                        cmd.Parameters.AddWithValue("@createdBy", createdBy);
 
-                        cmd.ExecuteNonQuery();
+                        int rowsAfected = cmd.ExecuteNonQuery();
+
+                        // Needs 1 row affected to ensure a new record added
+                        if (rowsAfected != 1)
+                        {
+                            throw new Exception("Failed to add appointment: No rows were inserted.");
+                        }
                     }
 
                 }
@@ -157,6 +163,7 @@ namespace SchedulingSystemWPF.DatabaseAccess
                         cmd.Parameters.AddWithValue("@lastUpdateBy", updatedBy);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
+
                         if (rowsAffected == 0)
                         {
                             throw new Exception($"No appointment found with ID {appointment.AppointmentId}.");
@@ -191,13 +198,18 @@ namespace SchedulingSystemWPF.DatabaseAccess
                     {
                         cmd.Parameters.AddWithValue("@appointmentId", appointmentId);
 
-                        cmd.ExecuteNonQuery();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected == 0)
+                        {
+                            throw new Exception($"No appointment found with ID {appointmentId}.");
+                        }
                     }
                 }
             }
             catch (MySqlException ex)
             {
-                throw ex;
+                throw new Exception($"Failed to delete appointment: {ex.Message}", ex);
             }
         }
     }
