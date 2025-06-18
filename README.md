@@ -16,6 +16,7 @@ An organization named “Global Consulting Agency” requires the development of a b
 -  **MVVM** (Model-View-ViewModel) Architecture
 - Low-Level Data Access with **ADO.NET** using SQL Queries
 - Encapsulation
+- Try-catch Exception Handling
 - UI Validations
 - *More Details coming soon.*
 
