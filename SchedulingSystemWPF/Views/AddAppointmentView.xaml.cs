@@ -5,6 +5,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace SchedulingSystemWPF.Views
 {
@@ -55,12 +56,18 @@ namespace SchedulingSystemWPF.Views
             TitleBox.Text = _appointmentToEdit.Title;
             DescriptionBox.Text = _appointmentToEdit.Description;
             LocationBox.Text = _appointmentToEdit.Location;
-            ContactBox.Text = _appointmentToEdit.Contact;
+            ContactBox.Text = _appointmentToEdit.Contact?.Replace("-", "");
             TypeBox.Text = _appointmentToEdit.Type;
             UrlBox.Text = _appointmentToEdit.Url;
             StartTimeBox.Text = _appointmentToEdit.Start.ToString("HH:mm");
             EndTimeBox.Text = _appointmentToEdit.End.ToString("HH:mm");
             CustomerBox.SelectedValue = _appointmentToEdit.CustomerId;
+        }
+
+        private void ContactBox_Preview(object sender, TextCompositionEventArgs e)
+        {
+            // Only digits (0-9)
+            e.Handled = !Regex.IsMatch(e.Text, @"^[0-9]+$");
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -92,13 +99,16 @@ namespace SchedulingSystemWPF.Views
 
             int customerId = (int)CustomerBox.SelectedValue;
 
-            // Validation for phone format pattern (7-digits ignoring non-digits)
-            string phonePattern = @"^\D*(\d\D*){7}$";
+            // Validation for phone format pattern (7-digits)
+            string phonePattern = @"^\d{7}$";
             if (!Regex.IsMatch(contactInput, phonePattern))
             {
-                MessageBox.Show("Please enter a valid 7-digits phone number.");
+                MessageBox.Show("Please enter a valid 7-digits phone number (e.g., 1234567).");
                 return;
             }
+
+            // Format phone number as 222 - 3434 for database storage
+            string formattedContact = $"{contactInput.Substring(0, 3)}-{contactInput.Substring(3, 4)}";
 
             // Validate time input, restricted to valid hours 0-23 format
             if (!Regex.IsMatch(startTimeInput, @"^([0-1][0-9]|2[0-3]):[0-5][0-9]$") ||
@@ -148,14 +158,14 @@ namespace SchedulingSystemWPF.Views
                 _appointmentToEdit.Title = titleInput;
                 _appointmentToEdit.Description = descriptionInput;
                 _appointmentToEdit.Location = locationInput;
-                _appointmentToEdit.Contact = contactInput;
+                _appointmentToEdit.Contact = formattedContact;
                 _appointmentToEdit.Type = typeInput;
                 _appointmentToEdit.Url = urlInput;
                 _appointmentToEdit.Start = startDateTime;
                 _appointmentToEdit.End = endDateTime;
                 _appointmentToEdit.CustomerId = customerId;
                 _appointmentToEdit.LastUpdate = DateTime.UtcNow;
-                _appointmentToEdit.LastUpdateBy = SessionManager.Username;
+                _appointmentToEdit.LastUpdateBy = username;
 
 
 
@@ -172,7 +182,7 @@ namespace SchedulingSystemWPF.Views
                     Title = titleInput,
                     Description = descriptionInput,
                     Location = locationInput,
-                    Contact = contactInput,
+                    Contact = formattedContact,
                     Type = typeInput,
                     Url = urlInput,
                     Start = startDateTime,

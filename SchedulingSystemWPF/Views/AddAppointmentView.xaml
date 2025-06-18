@@ -55,7 +55,7 @@
                     <!--Right Column-->
                     <StackPanel Grid.Column="1" Margin="10">
                         <TextBlock Text="Contact" />
-                        <TextBox x:Name="ContactBox" Margin="0,0,0,10"/>
+                        <TextBox x:Name="ContactBox" PreviewTextInput="ContactBox_Preview" Margin="0,0,0,10"/>
 
                         <TextBlock Text="Type" />
                         <TextBox x:Name="TypeBox" Margin="0,0,0,10"/>
