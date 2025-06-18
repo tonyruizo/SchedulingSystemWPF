@@ -43,7 +43,26 @@ namespace SchedulingSystemWPF.Views
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Delete appointment");
+            if (AppointmentGrid.SelectedItem is AppointmentsViewModel selectedAppointment)
+            {
+                int appointmentId = selectedAppointment.AppointmentId;
+
+                var confirmDelete = MessageBox.Show("Are you sure you want to delete this appointment?", "Confirm delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (confirmDelete == MessageBoxResult.Yes)
+                {
+                    var appointmentR = new AppointmentRepository();
+
+                    appointmentR.DeleteAppointment(appointmentId);
+
+                    // Refresh Grid
+                    AppointmentGrid.ItemsSource = appointmentR.GetAllAppointments();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to delete.");
+            }
         }
 
 
