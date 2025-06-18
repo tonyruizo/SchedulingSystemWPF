@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using SchedulingSystemWPF.Models;
+using System;
 using System.Collections.Generic;
 
 namespace SchedulingSystemWPF.DatabaseAccess
@@ -71,7 +72,7 @@ namespace SchedulingSystemWPF.DatabaseAccess
             }
             catch (MySqlException ex)
             {
-                throw ex;
+                throw new Exception($"Failed to retrieve customers: {ex.Message}", ex);
             }
 
             return customers;
@@ -104,7 +105,7 @@ namespace SchedulingSystemWPF.DatabaseAccess
             }
             catch (MySqlException ex)
             {
-                throw ex;
+                throw new Exception($"Failed to add customer to database: {ex.Message}", ex);
             }
         }
 

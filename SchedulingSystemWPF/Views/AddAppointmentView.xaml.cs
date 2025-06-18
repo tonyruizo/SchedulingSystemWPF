@@ -14,10 +14,29 @@ namespace SchedulingSystemWPF.Views
     public partial class AddAppointmentView : UserControl
     {
         private readonly ContentControl _parentContainer;
-        public AddAppointmentView(ContentControl ParentContainer)
+        private readonly Appointment _appointmentToEdit;
+        private readonly bool _isEditMode;
+
+        // Constructor 
+        public AddAppointmentView(ContentControl parentContainer, Appointment appointmentToEdit = null)
         {
-            _parentContainer = ParentContainer;
             InitializeComponent();
+            _parentContainer = parentContainer;
+            _appointmentToEdit = appointmentToEdit;
+            _isEditMode = _appointmentToEdit != null;
+
+            LoadCustomers();
+
+            if (_isEditMode)
+            {
+                AddButton.Content = "Update";
+                PopulateForm();
+
+            }
+        }
+
+        private void LoadCustomers()
+        {
             var customerR = new CustomerRepository();
             var customers = customerR.GetAllCustomers();
             CustomerBox.ItemsSource = customers;
@@ -28,6 +47,20 @@ namespace SchedulingSystemWPF.Views
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             _parentContainer.Content = new DashboardOptions(_parentContainer);
+        }
+
+        private void PopulateForm()
+        {
+            if (_appointmentToEdit == null) return;
+            TitleBox.Text = _appointmentToEdit.Title;
+            DescriptionBox.Text = _appointmentToEdit.Description;
+            LocationBox.Text = _appointmentToEdit.Location;
+            ContactBox.Text = _appointmentToEdit.Contact;
+            TypeBox.Text = _appointmentToEdit.Type;
+            UrlBox.Text = _appointmentToEdit.Url;
+            StartTimeBox.Text = _appointmentToEdit.Start.ToString("HH:mm");
+            EndTimeBox.Text = _appointmentToEdit.End.ToString("HH:mm");
+            CustomerBox.SelectedValue = _appointmentToEdit.CustomerId;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -103,31 +136,54 @@ namespace SchedulingSystemWPF.Views
             }
 
             // Get current username
-            var createdBy = SessionManager.Username;
+            var username = SessionManager.Username;
             // Get current userId
             var userId = SessionManager.UserId;
 
-            // Appointment Object
-            var appointment = new Appointment
-            {
-                CustomerId = customerId,
-                UserId = userId,
-                Title = titleInput,
-                Description = descriptionInput,
-                Location = locationInput,
-                Contact = contactInput,
-                Type = typeInput,
-                Url = urlInput,
-                Start = startDateTime,
-                End = endDateTime
-            };
-
-            // Add Appointment
             var appointmentR = new AppointmentRepository();
 
-            appointmentR.AddAppointment(appointment, createdBy);
+            if (_isEditMode)
+            {
+                // Update appointment
+                _appointmentToEdit.Title = titleInput;
+                _appointmentToEdit.Description = descriptionInput;
+                _appointmentToEdit.Location = locationInput;
+                _appointmentToEdit.Contact = contactInput;
+                _appointmentToEdit.Type = typeInput;
+                _appointmentToEdit.Url = urlInput;
+                _appointmentToEdit.Start = startDateTime;
+                _appointmentToEdit.End = endDateTime;
+                _appointmentToEdit.CustomerId = customerId;
+                _appointmentToEdit.LastUpdate = DateTime.UtcNow;
+                _appointmentToEdit.LastUpdateBy = SessionManager.Username;
 
-            MessageBox.Show("Appointment has been added!");
+
+
+                appointmentR.EditAppointment(_appointmentToEdit, username);
+                MessageBox.Show("Appointment updated!");
+            }
+            else
+            {
+                // Appointment Object
+                var appointment = new Appointment
+                {
+                    CustomerId = customerId,
+                    UserId = userId,
+                    Title = titleInput,
+                    Description = descriptionInput,
+                    Location = locationInput,
+                    Contact = contactInput,
+                    Type = typeInput,
+                    Url = urlInput,
+                    Start = startDateTime,
+                    End = endDateTime
+                };
+
+                // Add Appointment
+                appointmentR.AddAppointment(appointment, username);
+
+                MessageBox.Show("Appointment has been added!");
+            }
             _parentContainer.Content = new AppointmentsView(_parentContainer); ;
         }
     }

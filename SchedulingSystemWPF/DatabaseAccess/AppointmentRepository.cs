@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SchedulingSystemWPF.Models;
 using SchedulingSystemWPF.ViewModels;
+using System;
 using System.Collections.Generic;
 
 namespace SchedulingSystemWPF.DatabaseAccess
@@ -59,7 +60,7 @@ namespace SchedulingSystemWPF.DatabaseAccess
             }
             catch (MySqlException ex)
             {
-                throw ex;
+                throw new Exception($"Failed to retrieve appointments: {ex.Message}", ex);
             }
 
             return appointments;
@@ -103,23 +104,79 @@ namespace SchedulingSystemWPF.DatabaseAccess
             }
             catch (MySqlException ex)
             {
-                throw ex;
+                throw new Exception($"Failed to add appointment to database: {ex.Message}", ex);
             }
         }
 
-        //public void EditAppointment()
-        //{
-        //    try
-        //    {
+        /// <summary>
+        /// Updates the details of an existing appointment in the database.
+        /// </summary>
+        /// <remarks>This method updates the appointment record in the database with the values provided
+        /// in the <paramref name="appointment"/> object.</remarks>
+        /// <param name="appointment">The <see cref="Appointment"/> object containing the updated appointment details.</param>
+        /// <param name="updatedBy">The username or identifier of the user making the update.</param>
+        public void EditAppointment(Appointment appointment, string updatedBy)
+        {
+            try
+            {
+                using (var conn = DbConnect.GetConnection())
+                {
+                    conn.Open();
 
-        //    }
-        //    catch (MySqlException ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+                    string cmdQuery = @"
+                        UPDATE appointment
+                        SET
+                            customerId = @customerId,
+                            userId = @userId,
+                            title = @title,
+                            description = @description,
+                            location = @location,
+                            contact = @contact,
+                            type = @type,
+                            url = @url,
+                            start = @start,
+                            end = @end,
+                            lastUpdate = NOW(),
+                            lastUpdateBy = @lastUpdateBy
+                       WHERE appointmentId = @appointmentId";
 
+                    using (var cmd = new MySqlCommand(cmdQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentId", appointment.AppointmentId);
+                        cmd.Parameters.AddWithValue("@customerId", appointment.CustomerId);
+                        cmd.Parameters.AddWithValue("@userId", appointment.UserId);
+                        cmd.Parameters.AddWithValue("@title", appointment.Title);
+                        cmd.Parameters.AddWithValue("@description", appointment.Description);
+                        cmd.Parameters.AddWithValue("@location", appointment.Location);
+                        cmd.Parameters.AddWithValue("@contact", appointment.Contact);
+                        cmd.Parameters.AddWithValue("@type", appointment.Type);
+                        cmd.Parameters.AddWithValue("@url", appointment.Url);
+                        cmd.Parameters.AddWithValue("@start", appointment.Start);
+                        cmd.Parameters.AddWithValue("@end", appointment.End);
+                        cmd.Parameters.AddWithValue("@lastUpdate", DateTime.UtcNow);
+                        cmd.Parameters.AddWithValue("@lastUpdateBy", updatedBy);
 
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected == 0)
+                        {
+                            throw new Exception($"No appointment found with ID {appointment.AppointmentId}.");
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception($"Failed to update appointment: {ex.Message}", ex);
+            }
+        }
+
+        /// <summary>
+        /// Deletes an appointment from the database based on the specified appointment ID.
+        /// </summary>
+        /// <remarks>
+        /// This method removes the appointment record with the specified ID from the database.
+        /// </remarks>
+        /// <param name="appointmentId">The unique ID of the appointment to be deleted.</param>
         public void DeleteAppointment(int appointmentId)
         {
             try

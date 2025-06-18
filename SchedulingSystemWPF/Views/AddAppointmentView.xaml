@@ -91,7 +91,7 @@
                         Margin="5"  
                         Style="{StaticResource PrimaryButton}"/>
                     <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                        <Button Content="Add " Grid.Column="1" Click="Add_Click" Margin="5" Cursor="Hand" Style="{StaticResource SecondaryButton}"/>
+                        <Button Content="Add" x:Name="AddButton" Grid.Column="1" Click="Add_Click" Margin="5" Cursor="Hand" Style="{StaticResource SecondaryButton}"/>
                     </StackPanel>
                 </Grid>
 

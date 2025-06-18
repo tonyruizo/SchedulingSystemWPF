@@ -183,7 +183,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Views\App.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

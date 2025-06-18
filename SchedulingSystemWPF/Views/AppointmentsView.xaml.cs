@@ -1,4 +1,5 @@
 ﻿using SchedulingSystemWPF.DatabaseAccess;
+using SchedulingSystemWPF.Models;
 using SchedulingSystemWPF.ViewModels;
 using System.Collections.Generic;
 using System.Windows;
@@ -38,7 +39,33 @@ namespace SchedulingSystemWPF.Views
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Edit appointment");
+            if (AppointmentGrid.SelectedItem is AppointmentsViewModel selectedViewModel)
+            {
+                var appointment = new Appointment
+                {
+                    AppointmentId = selectedViewModel.AppointmentId,
+                    CustomerId = selectedViewModel.CustomerId,
+                    UserId = selectedViewModel.UserId,
+                    Title = selectedViewModel.Title,
+                    Description = selectedViewModel.Description,
+                    Location = selectedViewModel.Location,
+                    Contact = selectedViewModel.Contact,
+                    Type = selectedViewModel.Type,
+                    Url = selectedViewModel.Url,
+                    Start = selectedViewModel.Start,
+                    End = selectedViewModel.End,
+                    CreateDate = selectedViewModel.CreateDate,
+                    CreatedBy = selectedViewModel.CreatedBy,
+                    LastUpdate = selectedViewModel.LastUpdate,
+                    LastUpdateBy = selectedViewModel.LastUpdateBy
+                };
+
+                _parentContainer.Content = new AddAppointmentView(_parentContainer, appointment);
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to edit.");
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
