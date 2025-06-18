@@ -66,13 +66,40 @@ namespace SchedulingSystemWPF.DatabaseAccess
         }
 
         /// <summary>
-        /// Add a new appointment and add it to the database.
+        /// Add a new appointment to the database.
         /// </summary>
+        /// <param name="appointment">The appointment object to add.</param>
+        /// <param name="createdBy">The username of the user creating the appointment.</param>
         public void AddAppointment(Appointment appointment, string createdBy)
         {
             try
             {
+                using (var conn = DbConnect.GetConnection())
+                {
+                    conn.Open();
 
+                    string cmdQuery = @"
+                        INSERT INTO appointment(customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy)
+                        VALUE(@customerId, @userId, @title, @description,@location, @contact, @type, @url, @start, @end, NOW(), @createdBy, NOW(), @createdBy);";
+
+                    using (var cmd = new MySqlCommand(cmdQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@customerId", appointment.CustomerId);
+                        cmd.Parameters.AddWithValue("@userId", appointment.UserId);
+                        cmd.Parameters.AddWithValue("@title", appointment.Title);
+                        cmd.Parameters.AddWithValue("@description", appointment.Description);
+                        cmd.Parameters.AddWithValue("@location", appointment.Location);
+                        cmd.Parameters.AddWithValue("@contact", appointment.Contact);
+                        cmd.Parameters.AddWithValue("@type", appointment.Type);
+                        cmd.Parameters.AddWithValue("@url", appointment.Url);
+                        cmd.Parameters.AddWithValue("@start", appointment.Start);
+                        cmd.Parameters.AddWithValue("@end", appointment.End);
+                        cmd.Parameters.AddWithValue("@createdby", createdBy);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                }
             }
             catch (MySqlException ex)
             {
