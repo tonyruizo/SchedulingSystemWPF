@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SchedulingSystemWPF.Services;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace SchedulingSystemWPF.Views
@@ -25,6 +26,7 @@ namespace SchedulingSystemWPF.Views
 
             if (confirmLogout == MessageBoxResult.Yes)
             {
+                SessionManager.ClearSession();
                 _mainFrame.Navigate(new LoginPage(_mainFrame));
             }
 
