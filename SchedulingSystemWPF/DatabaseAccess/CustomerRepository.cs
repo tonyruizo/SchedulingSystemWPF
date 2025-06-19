@@ -10,6 +10,10 @@ namespace SchedulingSystemWPF.DatabaseAccess
     /// </summary>
     public class CustomerRepository
     {
+        /// <summary>
+        /// Get all customers.
+        /// </summary>
+        /// <returns>A list of customers.</returns>
         public List<Customer> GetAllCustomers()
         {
             List<Customer> customers = new List<Customer>();
@@ -81,6 +85,9 @@ namespace SchedulingSystemWPF.DatabaseAccess
         /// <summary>
         /// Add new customer data to the database.
         /// </summary>
+        /// <param name="nameInput">The customer name to add.</param>
+        /// <param name="addressId">The address Id associated with the customer.</param>
+        /// <param name="createdBy">The username of the user creating the customer form.</param>
         public void AddCustomer(string nameInput, int addressId, string createdBy)
         {
             try
@@ -115,19 +122,56 @@ namespace SchedulingSystemWPF.DatabaseAccess
             }
         }
 
-        //public void EditCustomer()
-        //{
-        //    try
-        //    {
+        /// <summary>
+        /// Updates the details of an existing customer in the database.
+        /// </summary>
+        /// <remarks>This method updates the customer record.</remarks>
+        public void EditCustomer(int customerId, string customerName, int addressId, string updatedBy)
+        {
+            try
+            {
+                using (var conn = DbConnect.GetConnection())
+                {
+                    conn.Open();
 
-        //    }
-        //    catch (MySqlException ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+                    string cmdQuery = @"
+                        UPDATE customer
+                        SET 
+                            customerName = @customerName,
+                            addressId = @addressId,
+                            lastUpdate = NOW(),
+                            lastUpdateBy = @updatedBy
+                        WHERE customerId = @customerId;";
 
+                    using (var cmd = new MySqlCommand(cmdQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@customerId", customerId);
+                        cmd.Parameters.AddWithValue("@customerName", customerName);
+                        cmd.Parameters.AddWithValue("@addressId", addressId);
+                        cmd.Parameters.AddWithValue("@updatedBy", updatedBy);
 
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected == 0)
+                        {
+                            throw new Exception($"No customer found with ID.");
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception($"Failed to update customer: {ex.Message}", ex);
+            }
+        }
+
+        /// <summary>
+        /// Deletes a customer from the database based on the specified customer ID.
+        /// </summary>
+        /// <remarks>
+        /// This method removes the customer record with the specified ID from the database.
+        /// </remarks>
+        /// <param name="customerId">The unique ID of the customer to be deleted.</param>
         public void DeleteCustomer(int customerId)
         {
             try

@@ -38,7 +38,31 @@ namespace SchedulingSystemWPF.Views
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Edit customer");
+            if (CustomerGrid.SelectedItem is Customer selectedView)
+            {
+                var customer = new Customer
+                {
+                    CustomerId = selectedView.CustomerId,
+                    CustomerName = selectedView.CustomerName,
+                    AddressId = selectedView.AddressId,
+                    AddressLine1 = selectedView.AddressLine1,
+                    AddressLine2 = selectedView.AddressLine2,
+                    City = selectedView.City,
+                    Country = selectedView.Country,
+                    PostalCode = selectedView.PostalCode,
+                    Phone = selectedView.Phone,
+                    CreateDate = selectedView.CreateDate,
+                    CreatedBy = selectedView.CreatedBy,
+                    LastUpdate = selectedView.LastUpdate,
+                    LastUpdateBy = selectedView.LastUpdateBy
+                };
+
+                _parentContainer.Content = new AddCustomerView(_parentContainer, customer);
+            }
+            else
+            {
+                MessageBox.Show("Please select a customer to edit.");
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
