@@ -127,7 +127,7 @@ namespace SchedulingSystemWPF.Views
             }
 
             // Use EST time zone
-            var estTimeZone = TimeZoneInfo.FindSystemTimeZoneById("EST");
+            var estTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
             DateTime today = DateTime.Today;
             DateTime startDateTime = today.Add(startTime);
             DateTime endDateTime = today.Add(endTime);
@@ -141,7 +141,8 @@ namespace SchedulingSystemWPF.Views
                 endBusiness.Hour < 9 || endBusiness.Hour > 17 ||
                 startBusiness.DayOfWeek == DayOfWeek.Saturday || startBusiness.DayOfWeek == DayOfWeek.Sunday)
             {
-                MessageBox.Show("Appointments must be scheduled between business hours (M-F, 9AM - 5PM EST");
+                MessageBox.Show("Appointments must be scheduled between business hours (M-F, 9AM - 5PM Eastern Time");
+                return;
             }
 
 

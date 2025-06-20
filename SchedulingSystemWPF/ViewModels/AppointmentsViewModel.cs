@@ -17,8 +17,11 @@ namespace SchedulingSystemWPF.ViewModels
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public DateTime CreateDate { get; set; }
-        public String CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         public DateTime LastUpdate { get; set; }
-        public String LastUpdateBy { get; set; }
+        public string LastUpdateBy { get; set; }
+
+        public DateTime StartLocal => TimeZoneInfo.ConvertTimeFromUtc(Start, TimeZoneInfo.Local);
+        public DateTime EndLocal => TimeZoneInfo.ConvertTimeFromUtc(End, TimeZoneInfo.Local);
     }
 }
