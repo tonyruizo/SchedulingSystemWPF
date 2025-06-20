@@ -38,6 +38,9 @@ namespace SchedulingSystemWPF.Views
                     SessionManager.LoggedInUser = authenticatedUser;
                     SessionManager.HasAlert = false;
 
+                    // Navigate to authorized dashboard page
+                    _mainFrame.Navigate(new DashboardPage(username, _mainFrame));
+
                     // Check for upcoming appointments
                     if (!SessionManager.HasAlert) // If true
                     {
@@ -64,9 +67,6 @@ namespace SchedulingSystemWPF.Views
                             MessageBox.Show($"Failed to check upcoming appointments: {ex.Message}");
                         }
                     }
-
-                    // Navigate to authorized dashboard page
-                    _mainFrame.Navigate(new DashboardPage(username, _mainFrame));
                 }
                 else
                 {
