@@ -126,9 +126,24 @@ namespace SchedulingSystemWPF.Views
                 return;
             }
 
+            // Use EST time zone
+            var estTimeZone = TimeZoneInfo.FindSystemTimeZoneById("EST");
             DateTime today = DateTime.Today;
             DateTime startDateTime = today.Add(startTime);
             DateTime endDateTime = today.Add(endTime);
+
+            // Business hours convertion (EST)
+            var startBusiness = TimeZoneInfo.ConvertTime(startDateTime, estTimeZone);
+            var endBusiness = TimeZoneInfo.ConvertTime(endDateTime, estTimeZone);
+
+            // Business hours validation 9AM - 5PM & Monday - Friday
+            if (startBusiness.Hour < 9 || startBusiness.Hour >= 17 ||
+                endBusiness.Hour < 9 || endBusiness.Hour > 17 ||
+                startBusiness.DayOfWeek == DayOfWeek.Saturday || startBusiness.DayOfWeek == DayOfWeek.Sunday)
+            {
+                MessageBox.Show("Appointments must be scheduled between business hours (M-F, 9AM - 5PM EST");
+            }
+
 
             // Validate that End time is after Start time
             if (endDateTime <= startDateTime)
