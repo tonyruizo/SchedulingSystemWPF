@@ -93,8 +93,8 @@ namespace SchedulingSystemWPF.DatabaseAccess
                         cmd.Parameters.AddWithValue("@contact", appointment.Contact);
                         cmd.Parameters.AddWithValue("@type", appointment.Type);
                         cmd.Parameters.AddWithValue("@url", appointment.Url);
-                        cmd.Parameters.AddWithValue("@start", appointment.Start);
-                        cmd.Parameters.AddWithValue("@end", appointment.End);
+                        cmd.Parameters.AddWithValue("@start", appointment.Start.ToUniversalTime());
+                        cmd.Parameters.AddWithValue("@end", appointment.End.ToUniversalTime());
                         cmd.Parameters.AddWithValue("@createdBy", createdBy);
 
                         int rowsAfected = cmd.ExecuteNonQuery();
@@ -157,8 +157,8 @@ namespace SchedulingSystemWPF.DatabaseAccess
                         cmd.Parameters.AddWithValue("@contact", appointment.Contact);
                         cmd.Parameters.AddWithValue("@type", appointment.Type);
                         cmd.Parameters.AddWithValue("@url", appointment.Url);
-                        cmd.Parameters.AddWithValue("@start", appointment.Start);
-                        cmd.Parameters.AddWithValue("@end", appointment.End);
+                        cmd.Parameters.AddWithValue("@start", appointment.Start.ToUniversalTime());
+                        cmd.Parameters.AddWithValue("@end", appointment.End.ToUniversalTime());
                         cmd.Parameters.AddWithValue("@lastUpdate", DateTime.UtcNow);
                         cmd.Parameters.AddWithValue("@lastUpdateBy", updatedBy);
 
@@ -211,6 +211,73 @@ namespace SchedulingSystemWPF.DatabaseAccess
             {
                 throw new Exception($"Failed to delete appointment: {ex.Message}", ex);
             }
+        }
+
+        /// <summary>
+        /// Get the the upcoming appointments withing a time range.
+        /// </summary>
+        /// <param name="userId">The ID of the current user in session.</param>
+        /// <param name="start">The start time (Now).</param>
+        /// <param name="end">The end of the time range (e.g., 15 minutes from now)</param>
+        /// <returns>A List of upcoming appointments.</returns>
+        public List<AppointmentsViewModel> GetUpcomingAppointments(int userId, DateTime start, DateTime end)
+        {
+            List<AppointmentsViewModel> appointments = new List<AppointmentsViewModel>();
+
+            try
+            {
+                using (var conn = DbConnect.GetConnection())
+                {
+                    conn.Open();
+
+                    string cmdQuery = @"
+                        SELECT a.*, c.customerName
+                        FROM appointment a
+                        JOIN customer c ON a.customerId = c.customerId
+                        WHERE a.userId = @userId
+                        AND a.start >= @start
+                        AND a.start <= @end";
+
+                    using (var cmd = new MySqlCommand(cmdQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@userId", userId);
+                        cmd.Parameters.AddWithValue("@start", start);
+                        cmd.Parameters.AddWithValue("@end", end);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                appointments.Add(new AppointmentsViewModel
+                                {
+                                    AppointmentId = reader.GetInt32("appointmentId"),
+                                    CustomerId = reader.GetInt32("customerId"),
+                                    CustomerName = reader.GetString("customerName"),
+                                    UserId = reader.GetInt32("userId"),
+                                    Title = reader.GetString("title"),
+                                    Description = reader.GetString("description"),
+                                    Location = reader.GetString("location"),
+                                    Contact = reader.GetString("contact"),
+                                    Type = reader.GetString("type"),
+                                    Url = reader.GetString("url"),
+                                    Start = reader.GetDateTime("start"),
+                                    End = reader.GetDateTime("end"),
+                                    CreateDate = reader.GetDateTime("createDate"),
+                                    CreatedBy = reader.GetString("createdBy"),
+                                    LastUpdate = reader.GetDateTime("lastUpdate"),
+                                    LastUpdateBy = reader.GetString("lastUpdateBy")
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to retrieve upcoming appointmets: {ex.Message}", ex);
+            }
+
+            return appointments;
         }
     }
 }
