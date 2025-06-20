@@ -173,7 +173,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Lang.es.resx" />
     <EmbeddedResource Include="Resources\Lang.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />

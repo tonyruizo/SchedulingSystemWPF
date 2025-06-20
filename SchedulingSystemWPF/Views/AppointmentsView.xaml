@@ -34,8 +34,8 @@
                     <DataGridTextColumn Header="Contact" Binding="{Binding Contact}" />
                     <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
                     <DataGridTextColumn Header="Url" Binding="{Binding Url}" />
-                    <DataGridTextColumn Header="Start" Binding="{Binding StartLocal}" />
-                    <DataGridTextColumn Header="End" Binding="{Binding EndLocal}" />
+                    <DataGridTextColumn Header="Start Time" Binding="{Binding StartLocal}" />
+                    <DataGridTextColumn Header="End Time" Binding="{Binding EndLocal}" />
                     <DataGridTextColumn Header="Created On" Binding="{Binding CreateDate}" />
                     <DataGridTextColumn Header="Created By" Binding="{Binding CreatedBy}" />
                     <DataGridTextColumn Header="Last Updated" Binding="{Binding LastUpdate}" />

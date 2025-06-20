@@ -133,6 +133,33 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm Delete.
+        /// </summary>
+        public static string ConfirmDeleteTitle {
+            get {
+                return ResourceManager.GetString("ConfirmDeleteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to log out?.
+        /// </summary>
+        public static string ConfirmLogout {
+            get {
+                return ResourceManager.GetString("ConfirmLogout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Logout.
+        /// </summary>
+        public static string ConfirmLogoutTitle {
+            get {
+                return ResourceManager.GetString("ConfirmLogoutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer has been added!.
         /// </summary>
         public static string CustomerAdded {
@@ -169,6 +196,15 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The username and password do not match..
+        /// </summary>
+        public static string InvalidCredentials {
+            get {
+                return ResourceManager.GetString("InvalidCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer’s name cannot be a number..
         /// </summary>
         public static string InvalidName {
@@ -187,7 +223,7 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter a valid phone number containing digits and optional dashes (e.g., 1234567 or 123-4567)..
+        ///   Looks up a localized string similar to Please enter a valid phone number containing digits and optional dashes (e.g., 1234567)..
         /// </summary>
         public static string InvalidPhoneFormat {
             get {
@@ -196,7 +232,7 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter a valid postal code (digits only, up to 7 characters)..
+        ///   Looks up a localized string similar to Please enter a valid postal code (digits only, up to 5 characters)..
         /// </summary>
         public static string InvalidPostalCode {
             get {
@@ -219,6 +255,24 @@ namespace SchedulingSystemWPF.Resources {
         public static string InvalidUrl {
             get {
                 return ResourceManager.GetString("InvalidUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill out BOTH username and password..
+        /// </summary>
+        public static string MissingCredentials {
+            get {
+                return ResourceManager.GetString("MissingCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select an appointment to edit or delete..
+        /// </summary>
+        public static string NoAppointmentSelected {
+            get {
+                return ResourceManager.GetString("NoAppointmentSelected", resourceCulture);
             }
         }
         
@@ -268,11 +322,29 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string SuccessTitle {
+            get {
+                return ResourceManager.GetString("SuccessTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upcoming appointments within 15 minutes:.
         /// </summary>
         public static string UpcomingAppointments {
             get {
                 return ResourceManager.GetString("UpcomingAppointments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string UpdateButton {
+            get {
+                return ResourceManager.GetString("UpdateButton", resourceCulture);
             }
         }
     }

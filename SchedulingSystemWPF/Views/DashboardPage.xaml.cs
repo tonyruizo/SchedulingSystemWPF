@@ -1,4 +1,6 @@
-﻿using SchedulingSystemWPF.Services;
+﻿using SchedulingSystemWPF.Resources;
+using SchedulingSystemWPF.Services;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,7 +24,12 @@ namespace SchedulingSystemWPF.Views
 
         public void Logout_Click(object sender, RoutedEventArgs e)
         {
-            var confirmLogout = MessageBox.Show("Are you sure you want to log out?", "Confirm logout", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            CultureInfo culture = CultureInfo.CurrentUICulture;
+
+            var confirmLogout = MessageBox.Show(Lang.ConfirmLogout,
+                Lang.ConfirmLogoutTitle,
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
 
             if (confirmLogout == MessageBoxResult.Yes)
             {

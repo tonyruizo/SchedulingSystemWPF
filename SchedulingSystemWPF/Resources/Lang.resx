@@ -141,6 +141,15 @@
   <data name="ConfirmDelete" xml:space="preserve">
     <value>Are you sure you want to delete this?</value>
   </data>
+  <data name="ConfirmDeleteTitle" xml:space="preserve">
+    <value>Confirm Delete</value>
+  </data>
+  <data name="ConfirmLogout" xml:space="preserve">
+    <value>Are you sure you want to log out?</value>
+  </data>
+  <data name="ConfirmLogoutTitle" xml:space="preserve">
+    <value>Confirm Logout</value>
+  </data>
   <data name="CustomerAdded" xml:space="preserve">
     <value>Customer has been added!</value>
   </data>
@@ -153,6 +162,9 @@
   <data name="EndAfterStart" xml:space="preserve">
     <value>End time must be after Start time.</value>
   </data>
+  <data name="InvalidCredentials" xml:space="preserve">
+    <value>The username and password do not match.</value>
+  </data>
   <data name="InvalidName" xml:space="preserve">
     <value>Customer’s name cannot be a number.</value>
   </data>
@@ -160,16 +172,22 @@
     <value>Please enter a valid 7-digit phone number (e.g., 1234567).</value>
   </data>
   <data name="InvalidPhoneFormat" xml:space="preserve">
-    <value>Please enter a valid phone number containing digits and optional dashes (e.g., 1234567 or 123-4567).</value>
+    <value>Please enter a valid phone number containing digits and optional dashes (e.g., 1234567).</value>
   </data>
   <data name="InvalidPostalCode" xml:space="preserve">
-    <value>Please enter a valid postal code (digits only, up to 7 characters).</value>
+    <value>Please enter a valid postal code (digits only, up to 5 characters).</value>
   </data>
   <data name="InvalidTimeFormat" xml:space="preserve">
     <value>Please enter the time in HH:MM format. (e.g., 02:00)</value>
   </data>
   <data name="InvalidUrl" xml:space="preserve">
     <value>Please enter a valid URL (e.g., https://example.com).</value>
+  </data>
+  <data name="MissingCredentials" xml:space="preserve">
+    <value>Please fill out BOTH username and password.</value>
+  </data>
+  <data name="NoAppointmentSelected" xml:space="preserve">
+    <value>Please select an appointment to edit or delete.</value>
   </data>
   <data name="NoCustomerSelected" xml:space="preserve">
     <value>Please select a customer to edit or delete.</value>
@@ -186,7 +204,13 @@
   <data name="SessionNotFound" xml:space="preserve">
     <value>User session not found. Please log in again.</value>
   </data>
+  <data name="SuccessTitle" xml:space="preserve">
+    <value>Success</value>
+  </data>
   <data name="UpcomingAppointments" xml:space="preserve">
     <value>Upcoming appointments within 15 minutes:</value>
+  </data>
+  <data name="UpdateButton" xml:space="preserve">
+    <value>Update</value>
   </data>
 </root>

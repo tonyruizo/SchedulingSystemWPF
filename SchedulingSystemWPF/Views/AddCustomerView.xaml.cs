@@ -1,7 +1,9 @@
 ﻿using SchedulingSystemWPF.DatabaseAccess;
 using SchedulingSystemWPF.Models;
+using SchedulingSystemWPF.Resources;
 using SchedulingSystemWPF.Services;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -29,7 +31,7 @@ namespace SchedulingSystemWPF.Views
 
             if (_isEditMode)
             {
-                AddButton.Content = "Update";
+                AddButton.Content = Lang.UpdateButton;
                 PopulateForm();
             }
         }
@@ -48,17 +50,20 @@ namespace SchedulingSystemWPF.Views
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            _parentContainer.Content = new DashboardOptions(_parentContainer);
+            _parentContainer.Content = new CustomersView(_parentContainer);
         }
 
         private void PhoneBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            // Only digits
-            e.Handled = !Regex.IsMatch(e.Text, @"^[0-9]+$");
+            // Only digits and dashes
+            e.Handled = !Regex.IsMatch(e.Text, @"^[0-9\-]+$");
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            // Set culture for localization
+            CultureInfo culture = CultureInfo.CurrentUICulture;
+
             // Assign TextBox values
             // If !null "?", excecute Trim() to remove white space from start and end
             string nameInput = CustomerNameBox.Text?.Trim();
@@ -77,14 +82,14 @@ namespace SchedulingSystemWPF.Views
                 string.IsNullOrEmpty(postalCodeInput) ||
                 string.IsNullOrEmpty(phoneInput))
             {
-                MessageBox.Show("All fields must be filled.");
+                MessageBox.Show(Lang.AllFieldsRequired, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             // Validation for string type in name
             if (int.TryParse(nameInput, out _))
             {
-                MessageBox.Show("Customer's name cannot be a number.");
+                MessageBox.Show(Lang.InvalidName, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -92,7 +97,7 @@ namespace SchedulingSystemWPF.Views
             string phonePattern = @"^\d{7}$";
             if (!Regex.IsMatch(phoneInput, phonePattern))
             {
-                MessageBox.Show("Please enter a valid 7-digits phone number (e.g., 1234567).");
+                MessageBox.Show(Lang.InvalidPhoneFormat, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -103,12 +108,17 @@ namespace SchedulingSystemWPF.Views
             if (!postalCodeInput.All(char.IsDigit) ||
                 postalCodeInput.Length > 5)
             {
-                MessageBox.Show("Please enter a valid postal code.");
+                MessageBox.Show(Lang.InvalidPostalCode, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             // Get current username
             var username = SessionManager.Username;
+            if (string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show(Lang.SessionNotFound, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             var countryR = new CountryRepository();
             var cityR = new CityRepository();
@@ -138,7 +148,7 @@ namespace SchedulingSystemWPF.Views
                     _customerToEdit.LastUpdateBy = username;
 
                     customerR.EditCustomer(_customerToEdit.CustomerId, nameInput, addressId, username);
-                    MessageBox.Show("Customer updated!");
+                    MessageBox.Show(Lang.CustomerUpdated, Lang.SuccessTitle, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -147,7 +157,7 @@ namespace SchedulingSystemWPF.Views
 
                     // Add Customer
                     customerR.AddCustomer(nameInput, addressId, username);
-                    MessageBox.Show("Customer has been added!");
+                    MessageBox.Show(Lang.CustomerAdded, Lang.SuccessTitle, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
 
                 // Navigate only on success
@@ -155,8 +165,7 @@ namespace SchedulingSystemWPF.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to save customer: {ex.Message}");
-                return;
+                MessageBox.Show(string.Format(Lang.SaveCustomerFailed, ex.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error); return;
             }
 
         }

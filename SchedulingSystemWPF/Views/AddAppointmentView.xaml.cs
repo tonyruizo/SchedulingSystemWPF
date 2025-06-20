@@ -1,7 +1,10 @@
 ﻿using SchedulingSystemWPF.DatabaseAccess;
 using SchedulingSystemWPF.Models;
+using SchedulingSystemWPF.Resources;
 using SchedulingSystemWPF.Services;
 using System;
+using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,7 +33,7 @@ namespace SchedulingSystemWPF.Views
 
             if (_isEditMode)
             {
-                AddButton.Content = "Update";
+                AddButton.Content = Lang.UpdateButton;
                 PopulateForm();
 
             }
@@ -47,7 +50,7 @@ namespace SchedulingSystemWPF.Views
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            _parentContainer.Content = new DashboardOptions(_parentContainer);
+            _parentContainer.Content = new AppointmentsView(_parentContainer);
         }
 
         private void PopulateForm()
@@ -72,6 +75,9 @@ namespace SchedulingSystemWPF.Views
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            // Set culture for localization
+            CultureInfo culture = CultureInfo.CurrentUICulture;
+
             // Assign TextBox values
             string titleInput = TitleBox.Text?.Trim();
             string descriptionInput = DescriptionBox.Text?.Trim();
@@ -93,7 +99,7 @@ namespace SchedulingSystemWPF.Views
                 string.IsNullOrEmpty(startTimeInput) ||
                 string.IsNullOrEmpty(endTimeInput))
             {
-                MessageBox.Show("All fields must be filled.");
+                MessageBox.Show(Lang.AllFieldsRequired, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -103,7 +109,7 @@ namespace SchedulingSystemWPF.Views
             string phonePattern = @"^\d{7}$";
             if (!Regex.IsMatch(contactInput, phonePattern))
             {
-                MessageBox.Show("Please enter a valid 7-digits phone number (e.g., 1234567).");
+                MessageBox.Show(Lang.InvalidPhone, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -114,7 +120,7 @@ namespace SchedulingSystemWPF.Views
             if (!Regex.IsMatch(startTimeInput, @"^([0-1][0-9]|2[0-3]):[0-5][0-9]$") ||
                 !Regex.IsMatch(endTimeInput, @"^([0-1][0-9]|2[0-3]):[0-5][0-9]$"))
             {
-                MessageBox.Show("Please enter the time in HH:MM format. (e.g, 02:00)");
+                MessageBox.Show(Lang.InvalidTimeFormat, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -122,7 +128,7 @@ namespace SchedulingSystemWPF.Views
             if (!TimeSpan.TryParse(startTimeInput, out TimeSpan startTime) ||
                 !TimeSpan.TryParse(endTimeInput, out TimeSpan endTime))
             {
-                MessageBox.Show("Invalid time format. Please use HH:MM. (e.g, 02:00)");
+                MessageBox.Show(Lang.InvalidTimeFormat, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -141,7 +147,7 @@ namespace SchedulingSystemWPF.Views
                 endBusiness.Hour < 9 || endBusiness.Hour > 17 ||
                 startBusiness.DayOfWeek == DayOfWeek.Saturday || startBusiness.DayOfWeek == DayOfWeek.Sunday)
             {
-                MessageBox.Show("Appointments must be scheduled between business hours (M-F, 9AM - 5PM Eastern Time");
+                MessageBox.Show(Lang.BusinessHoursError, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -149,7 +155,7 @@ namespace SchedulingSystemWPF.Views
             // Validate that End time is after Start time
             if (endDateTime <= startDateTime)
             {
-                MessageBox.Show("End time must be after Start time.");
+                MessageBox.Show(Lang.EndAfterStart, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -157,7 +163,7 @@ namespace SchedulingSystemWPF.Views
             string urlPattern = @"^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$";
             if (!Regex.IsMatch(urlInput, urlPattern))
             {
-                MessageBox.Show("Please enter a valid URL (e.g., https://example.com).");
+                MessageBox.Show(Lang.InvalidUrl, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -166,51 +172,92 @@ namespace SchedulingSystemWPF.Views
             // Get current userId
             var userId = SessionManager.UserId;
 
+            if (string.IsNullOrEmpty(username) || userId == 0)
+            {
+                MessageBox.Show(Lang.SessionNotFound, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             var appointmentR = new AppointmentRepository();
 
-            if (_isEditMode)
+            // Check for overlapping appointments
+            try
             {
-                // Update appointment
-                _appointmentToEdit.Title = titleInput;
-                _appointmentToEdit.Description = descriptionInput;
-                _appointmentToEdit.Location = locationInput;
-                _appointmentToEdit.Contact = formattedContact;
-                _appointmentToEdit.Type = typeInput;
-                _appointmentToEdit.Url = urlInput;
-                _appointmentToEdit.Start = startDateTime;
-                _appointmentToEdit.End = endDateTime;
-                _appointmentToEdit.CustomerId = customerId;
-                _appointmentToEdit.LastUpdate = DateTime.UtcNow;
-                _appointmentToEdit.LastUpdateBy = username;
+                var startUtc = startDateTime.ToUniversalTime();
+                var endUtc = endDateTime.ToUniversalTime();
+                var overlappingAppointments = appointmentR.GetUpcomingAppointments(userId, startUtc, endUtc);
 
-
-
-                appointmentR.EditAppointment(_appointmentToEdit, username);
-                MessageBox.Show("Appointment updated!");
-            }
-            else
-            {
-                // Appointment Object
-                var appointment = new Appointment
+                if (_isEditMode)
                 {
-                    CustomerId = customerId,
-                    UserId = userId,
-                    Title = titleInput,
-                    Description = descriptionInput,
-                    Location = locationInput,
-                    Contact = formattedContact,
-                    Type = typeInput,
-                    Url = urlInput,
-                    Start = startDateTime,
-                    End = endDateTime
-                };
+                    overlappingAppointments = overlappingAppointments
+                        .Where(a => a.AppointmentId != _appointmentToEdit.AppointmentId)
+                        .ToList();
+                }
 
-                // Add Appointment
-                appointmentR.AddAppointment(appointment, username);
-
-                MessageBox.Show("Appointment has been added!");
+                if (overlappingAppointments.Any())
+                {
+                    MessageBox.Show(Lang.OverlapError, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
             }
-            _parentContainer.Content = new AppointmentsView(_parentContainer); ;
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format(Lang.SaveFailed, ex.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            try
+            {
+
+                if (_isEditMode)
+                {
+                    // Update appointment
+                    _appointmentToEdit.Title = titleInput;
+                    _appointmentToEdit.Description = descriptionInput;
+                    _appointmentToEdit.Location = locationInput;
+                    _appointmentToEdit.Contact = formattedContact;
+                    _appointmentToEdit.Type = typeInput;
+                    _appointmentToEdit.Url = urlInput;
+                    _appointmentToEdit.Start = startDateTime;
+                    _appointmentToEdit.End = endDateTime;
+                    _appointmentToEdit.CustomerId = customerId;
+                    _appointmentToEdit.LastUpdate = DateTime.UtcNow;
+                    _appointmentToEdit.LastUpdateBy = username;
+
+
+
+                    appointmentR.EditAppointment(_appointmentToEdit, username);
+                    MessageBox.Show(Lang.AppointmentUpdated, "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    // Appointment Object
+                    var appointment = new Appointment
+                    {
+                        CustomerId = customerId,
+                        UserId = userId,
+                        Title = titleInput,
+                        Description = descriptionInput,
+                        Location = locationInput,
+                        Contact = formattedContact,
+                        Type = typeInput,
+                        Url = urlInput,
+                        Start = startDateTime,
+                        End = endDateTime
+                    };
+
+                    // Add Appointment
+                    appointmentR.AddAppointment(appointment, username);
+
+                    MessageBox.Show(Lang.AppointmentAdded, "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                _parentContainer.Content = new AppointmentsView(_parentContainer); ;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format(Lang.SaveFailed, ex.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
     }
 }

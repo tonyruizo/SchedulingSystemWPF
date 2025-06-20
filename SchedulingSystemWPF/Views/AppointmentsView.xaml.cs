@@ -1,6 +1,8 @@
 ﻿using SchedulingSystemWPF.DatabaseAccess;
 using SchedulingSystemWPF.Models;
+using SchedulingSystemWPF.Resources;
 using SchedulingSystemWPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -64,7 +66,7 @@ namespace SchedulingSystemWPF.Views
             }
             else
             {
-                MessageBox.Show("Please select an appointment to edit.");
+                MessageBox.Show(Lang.NoAppointmentSelected, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -74,21 +76,28 @@ namespace SchedulingSystemWPF.Views
             {
                 int appointmentId = selectedAppointment.AppointmentId;
 
-                var confirmDelete = MessageBox.Show("Are you sure you want to delete this appointment?", "Confirm delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var confirmDelete = MessageBox.Show(Lang.ConfirmDelete, Lang.ConfirmDeleteTitle, MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (confirmDelete == MessageBoxResult.Yes)
                 {
                     var appointmentR = new AppointmentRepository();
 
-                    appointmentR.DeleteAppointment(appointmentId);
+                    try
+                    {
+                        appointmentR.DeleteAppointment(appointmentId);
 
-                    // Refresh Grid
-                    AppointmentGrid.ItemsSource = appointmentR.GetAllAppointments();
+                        // Refresh Grid
+                        AppointmentGrid.ItemsSource = appointmentR.GetAllAppointments();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(String.Format(Lang.DeleteFailed, ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error));
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Please select an appointment to delete.");
+                MessageBox.Show(Lang.NoAppointmentSelected, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

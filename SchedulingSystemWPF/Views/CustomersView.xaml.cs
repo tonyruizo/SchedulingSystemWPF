@@ -1,5 +1,7 @@
 ﻿using SchedulingSystemWPF.DatabaseAccess;
 using SchedulingSystemWPF.Models;
+using SchedulingSystemWPF.Resources;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -61,7 +63,7 @@ namespace SchedulingSystemWPF.Views
             }
             else
             {
-                MessageBox.Show("Please select a customer to edit.");
+                MessageBox.Show(Lang.NoCustomerSelected, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -71,21 +73,26 @@ namespace SchedulingSystemWPF.Views
             {
                 int customerId = selectedCustomer.CustomerId;
 
-                var confirmDelete = MessageBox.Show("Are you sure you want to delete this customer?", "Confirm delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var confirmDelete = MessageBox.Show(Lang.ConfirmDelete, Lang.ConfirmDeleteTitle, MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (confirmDelete == MessageBoxResult.Yes)
                 {
                     var customerR = new CustomerRepository();
 
-                    customerR.DeleteCustomer(customerId);
-
-                    // Refresh Grid
-                    CustomerGrid.ItemsSource = customerR.GetAllCustomers();
+                    try
+                    {
+                        customerR.DeleteCustomer(customerId);
+                        CustomerGrid.ItemsSource = customerR.GetAllCustomers();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format(Lang.DeleteFailed, ex.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Please select a customer to delete.");
+                MessageBox.Show(Lang.NoCustomerSelected, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

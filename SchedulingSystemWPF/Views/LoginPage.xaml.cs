@@ -1,6 +1,8 @@
 ﻿using SchedulingSystemWPF.DatabaseAccess;
+using SchedulingSystemWPF.Resources;
 using SchedulingSystemWPF.Services;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +24,9 @@ namespace SchedulingSystemWPF.Views
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            // Culture for Localization
+            CultureInfo culture = CultureInfo.CurrentUICulture;
+
             // Assign TextBox values to variables for validation
             var username = UsernameBox.Text?.Trim();
             var password = PasswordBox.Password?.Trim();
@@ -56,26 +61,29 @@ namespace SchedulingSystemWPF.Views
                             {
                                 var localTimeZone = TimeZoneInfo.Local;
                                 var message = string.Join("\n", upcomingAppointments.Select(a =>
-                                    $"Appointment: {a.Title} with {a.CustomerName} at {TimeZoneInfo.ConvertTimeFromUtc(a.Start, localTimeZone):HH:mm}"));
+                                    string.Format(Lang.AppointmentMessageFormat,
+                                        a.Title,
+                                        a.CustomerName,
+                                        TimeZoneInfo.ConvertTimeFromUtc(a.Start, localTimeZone).ToString(culture.DateTimeFormat.ShortTimePattern))));
+                                MessageBox.Show($"{Lang.UpcomingAppointments}\n{message}", Lang.AppointmentAlert, MessageBoxButton.OK, MessageBoxImage.Information);
 
-                                MessageBox.Show($"Upcoming appointments within 15 minutes:\n{message}", "Appointment Alert");
                                 SessionManager.HasAlert = true;
                             }
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show($"Failed to check upcoming appointments: {ex.Message}");
+                            MessageBox.Show(string.Format(Lang.AlertError, ex.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("The username and password do not match. Please try again.");
+                    MessageBox.Show(Lang.InvalidCredentials, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Please fill out BOTH username and password.");
+                MessageBox.Show(Lang.MissingCredentials, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

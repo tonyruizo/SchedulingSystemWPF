@@ -141,6 +141,15 @@
   <data name="ConfirmDelete" xml:space="preserve">
     <value>¿Estás seguro de que quieres eliminar esto?</value>
   </data>
+  <data name="ConfirmDeleteTitle" xml:space="preserve">
+    <value>Confirmar Eliminación</value>
+  </data>
+  <data name="ConfirmLogout" xml:space="preserve">
+    <value>¿Estás seguro de que quieres cerrar la sesión?</value>
+  </data>
+  <data name="ConfirmLogoutTitle" xml:space="preserve">
+    <value>Confirmar Cierre de Sesión</value>
+  </data>
   <data name="CustomerAdded" xml:space="preserve">
     <value>¡Cliente añadido!</value>
   </data>
@@ -153,6 +162,9 @@
   <data name="EndAfterStart" xml:space="preserve">
     <value>La hora de fin debe ser posterior a la hora de inicio.</value>
   </data>
+  <data name="InvalidCredentials" xml:space="preserve">
+    <value>El nombre de usuario y la contraseña no coinciden.</value>
+  </data>
   <data name="InvalidName" xml:space="preserve">
     <value>El nombre del cliente no puede ser un número.</value>
   </data>
@@ -160,7 +172,7 @@
     <value>Por favor, ingrese un número de teléfono válido de 7 dígitos (e.g., 1234567).</value>
   </data>
   <data name="InvalidPhoneFormat" xml:space="preserve">
-    <value>Por favor, ingrese un número de teléfono válido que contenga dígitos y guiones opcionales (e.g., 1234567 o 123-4567).</value>
+    <value>Por favor, ingrese un número de teléfono válido que contenga dígitos y guiones opcionales (e.g., 1234567).</value>
   </data>
   <data name="InvalidPostalCode" xml:space="preserve">
     <value>Por favor, ingrese un código postal válido (solo dígitos, hasta 7 caracteres).</value>
@@ -170,6 +182,12 @@
   </data>
   <data name="InvalidUrl" xml:space="preserve">
     <value>Por favor, ingrese una URL válida (e.g., https://example.com).</value>
+  </data>
+  <data name="MissingCredentials" xml:space="preserve">
+    <value>Por favor, complete AMBOS el nombre de usuario y la contraseña.</value>
+  </data>
+  <data name="NoAppointmentSelected" xml:space="preserve">
+    <value>Por favor, seleccione la cita para editar o eliminar.</value>
   </data>
   <data name="NoCustomerSelected" xml:space="preserve">
     <value>Por favor, seleccione un cliente para editar o eliminar.</value>
@@ -186,7 +204,13 @@
   <data name="SessionNotFound" xml:space="preserve">
     <value>Sesión de usuario no encontrada. Por favor, inicie sesión nuevamente.</value>
   </data>
+  <data name="SuccessTitle" xml:space="preserve">
+    <value>Éxito</value>
+  </data>
   <data name="UpcomingAppointments" xml:space="preserve">
     <value>Citas próximas dentro de 15 minutos:</value>
+  </data>
+  <data name="UpdateButton" xml:space="preserve">
+    <value>Actualizar</value>
   </data>
 </root>
