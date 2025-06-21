@@ -28,5 +28,9 @@
         <StackPanel Width="250">
             <Button Content="Add New Customer" Click="AddCustomer_Click"  Margin="0 0 0 10" Cursor="Hand" Style="{StaticResource SecondaryButton}"/>
         </StackPanel>
+
+        <StackPanel Width="250" Margin="0 15 0 0">
+            <Button Content="View Reports" Click="ViewReports_Click"  Margin="0 0 0 10" Cursor="Hand" Style="{StaticResource PrimaryButton}"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

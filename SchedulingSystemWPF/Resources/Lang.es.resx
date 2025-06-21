@@ -129,11 +129,23 @@
   <data name="AppointmentAlert" xml:space="preserve">
     <value>Alerta de Cita</value>
   </data>
+  <data name="AppointmentCount" xml:space="preserve">
+    <value>Conteo de citas</value>
+  </data>
   <data name="AppointmentMessageFormat" xml:space="preserve">
     <value>Cita: {0} con {1} a las {2}</value>
   </data>
+  <data name="AppointmentType" xml:space="preserve">
+    <value>Tipo de cita</value>
+  </data>
+  <data name="AppointmentTypesByMonth" xml:space="preserve">
+    <value>Tipos de citas por mes</value>
+  </data>
   <data name="AppointmentUpdated" xml:space="preserve">
     <value>¡Cita actualizada!</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Atras</value>
   </data>
   <data name="BusinessHoursError" xml:space="preserve">
     <value>Las citas deben programarse entre las 9:00 y las 17:00 EST, de lunes a viernes.</value>
@@ -150,8 +162,17 @@
   <data name="ConfirmLogoutTitle" xml:space="preserve">
     <value>Confirmar Cierre de Sesión</value>
   </data>
+  <data name="Count" xml:space="preserve">
+    <value>Conteo</value>
+  </data>
   <data name="CustomerAdded" xml:space="preserve">
     <value>¡Cliente añadido!</value>
+  </data>
+  <data name="CustomerAppointmentCount" xml:space="preserve">
+    <value>Conteo de citas por cliente</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>Nombre del cliente</value>
   </data>
   <data name="CustomerUpdated" xml:space="preserve">
     <value>¡Cliente actualizado!</value>
@@ -161,6 +182,15 @@
   </data>
   <data name="EndAfterStart" xml:space="preserve">
     <value>La hora de fin debe ser posterior a la hora de inicio.</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>Hora de fin</value>
+  </data>
+  <data name="ErrorLoadingReports" xml:space="preserve">
+    <value>No se pudieron cargar los informes: {0}</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
   </data>
   <data name="InvalidCredentials" xml:space="preserve">
     <value>El nombre de usuario y la contraseña no coinciden.</value>
@@ -186,6 +216,9 @@
   <data name="MissingCredentials" xml:space="preserve">
     <value>Por favor, complete AMBOS el nombre de usuario y la contraseña.</value>
   </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mes</value>
+  </data>
   <data name="NoAppointmentSelected" xml:space="preserve">
     <value>Por favor, seleccione la cita para editar o eliminar.</value>
   </data>
@@ -194,6 +227,9 @@
   </data>
   <data name="OverlapError" xml:space="preserve">
     <value>Esta cita se superpone con una cita existente.</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>Informes</value>
   </data>
   <data name="SaveCustomerFailed" xml:space="preserve">
     <value>No se pudo guardar el cliente: {0}</value>
@@ -204,8 +240,14 @@
   <data name="SessionNotFound" xml:space="preserve">
     <value>Sesión de usuario no encontrada. Por favor, inicie sesión nuevamente.</value>
   </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Hora de inicio</value>
+  </data>
   <data name="SuccessTitle" xml:space="preserve">
     <value>Éxito</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titolo</value>
   </data>
   <data name="UpcomingAppointments" xml:space="preserve">
     <value>Citas próximas dentro de 15 minutos:</value>
@@ -218,5 +260,11 @@
   </data>
   <data name="UserLoggedOut" xml:space="preserve">
     <value>Usuario: {0} cerró sesión</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Nombre de usuario</value>
+  </data>
+  <data name="UserSchedule" xml:space="preserve">
+    <value>Horario de usuarios</value>
   </data>
 </root>

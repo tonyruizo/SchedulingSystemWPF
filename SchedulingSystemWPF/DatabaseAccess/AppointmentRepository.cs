@@ -26,9 +26,10 @@ namespace SchedulingSystemWPF.DatabaseAccess
                     conn.Open();
 
                     string query = @"
-                        SELECT a.*, c.customerName
+                        SELECT a.*, c.customerName, u.userName
                         FROM appointment a
-                        JOIN customer c ON a.customerId = c.customerId";
+                        JOIN customer c ON a.customerId = c.customerId
+                        JOIN user u ON a.userId = u.userId";
 
                     using (var cmd = new MySqlCommand(query, conn))
                     using (var reader = cmd.ExecuteReader())
@@ -41,6 +42,7 @@ namespace SchedulingSystemWPF.DatabaseAccess
                                 CustomerId = reader.GetInt32("customerId"),
                                 CustomerName = reader.GetString("customerName"),
                                 UserId = reader.GetInt32("userId"),
+                                UserName = reader.GetString("userName"),
                                 Title = reader.GetString("title"),
                                 Description = reader.GetString("description"),
                                 Location = reader.GetString("location"),

@@ -6,3 +6,12 @@
 20/06/2025 20:39: Usuario: test cerró sesión
 6/20/2025 9:23 PM: User: tony logged in
 6/20/2025 9:27 PM: User: tony logged out
+6/21/2025 2:48 PM: User: test logged in
+6/21/2025 2:49 PM: User: test logged out
+6/21/2025 6:06 PM: User: tony logged in
+6/21/2025 6:10 PM: User: tony logged out
+6/21/2025 6:12 PM: User: test logged in
+6/21/2025 6:13 PM: User: test logged out
+6/21/2025 6:14 PM: User: test logged in
+6/21/2025 6:15 PM: User: tony logged in
+6/21/2025 6:15 PM: User: tony logged out

@@ -129,11 +129,23 @@
   <data name="AppointmentAlert" xml:space="preserve">
     <value>Appointment Alert</value>
   </data>
+  <data name="AppointmentCount" xml:space="preserve">
+    <value>Appointment Count</value>
+  </data>
   <data name="AppointmentMessageFormat" xml:space="preserve">
     <value>Appointment: {0} with {1} at {2}</value>
   </data>
+  <data name="AppointmentType" xml:space="preserve">
+    <value>Appointment Type</value>
+  </data>
+  <data name="AppointmentTypesByMonth" xml:space="preserve">
+    <value>Appointment Types by Month</value>
+  </data>
   <data name="AppointmentUpdated" xml:space="preserve">
     <value>Appointment updated!</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
   </data>
   <data name="BusinessHoursError" xml:space="preserve">
     <value>Appointments must be scheduled between 9:00 AM and 5:00 PM EST, Monday–Friday.</value>
@@ -150,8 +162,17 @@
   <data name="ConfirmLogoutTitle" xml:space="preserve">
     <value>Confirm Logout</value>
   </data>
+  <data name="Count" xml:space="preserve">
+    <value>Count</value>
+  </data>
   <data name="CustomerAdded" xml:space="preserve">
     <value>Customer has been added!</value>
+  </data>
+  <data name="CustomerAppointmentCount" xml:space="preserve">
+    <value>Customer Appointment Count</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>Customer Name</value>
   </data>
   <data name="CustomerUpdated" xml:space="preserve">
     <value>Customer has been updated!</value>
@@ -161,6 +182,15 @@
   </data>
   <data name="EndAfterStart" xml:space="preserve">
     <value>End time must be after Start time.</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>End Time</value>
+  </data>
+  <data name="ErrorLoadingReports" xml:space="preserve">
+    <value>Failed to load reports: {0}</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
   </data>
   <data name="InvalidCredentials" xml:space="preserve">
     <value>The username and password do not match.</value>
@@ -186,6 +216,9 @@
   <data name="MissingCredentials" xml:space="preserve">
     <value>Please fill out BOTH username and password.</value>
   </data>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
   <data name="NoAppointmentSelected" xml:space="preserve">
     <value>Please select an appointment to edit or delete.</value>
   </data>
@@ -194,6 +227,9 @@
   </data>
   <data name="OverlapError" xml:space="preserve">
     <value>This appointment overlaps with an existing appointment.</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>Reports</value>
   </data>
   <data name="SaveCustomerFailed" xml:space="preserve">
     <value>Failed to save customer: {0}</value>
@@ -204,8 +240,14 @@
   <data name="SessionNotFound" xml:space="preserve">
     <value>User session not found. Please log in again.</value>
   </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
   <data name="SuccessTitle" xml:space="preserve">
     <value>Success</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="UpcomingAppointments" xml:space="preserve">
     <value>Upcoming appointments within 15 minutes:</value>
@@ -218,5 +260,11 @@
   </data>
   <data name="UserLoggedOut" xml:space="preserve">
     <value>User: {0} logged out</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="UserSchedule" xml:space="preserve">
+    <value>User Schedule</value>
   </data>
 </root>

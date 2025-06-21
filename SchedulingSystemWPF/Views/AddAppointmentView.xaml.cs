@@ -196,13 +196,13 @@ namespace SchedulingSystemWPF.Views
 
                 if (overlappingAppointments.Any())
                 {
-                    MessageBox.Show(Lang.OverlapError, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Lang.OverlapError, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format(Lang.SaveFailed, ex.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(string.Format(Lang.SaveFailed, ex.Message), Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -227,7 +227,7 @@ namespace SchedulingSystemWPF.Views
 
 
                     appointmentR.EditAppointment(_appointmentToEdit, username);
-                    MessageBox.Show(Lang.AppointmentUpdated, "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Lang.AppointmentUpdated, Lang.SuccessTitle, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -249,13 +249,13 @@ namespace SchedulingSystemWPF.Views
                     // Add Appointment
                     appointmentR.AddAppointment(appointment, username);
 
-                    MessageBox.Show(Lang.AppointmentAdded, "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Lang.AppointmentAdded, Lang.SuccessTitle, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 _parentContainer.Content = new AppointmentsView(_parentContainer); ;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format(Lang.SaveFailed, ex.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(string.Format(Lang.SaveFailed, ex.Message), Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
         }

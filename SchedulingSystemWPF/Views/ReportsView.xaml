@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="SchedulingSystemWPF.Views.ReportsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:res="clr-namespace:SchedulingSystemWPF.Resources"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="white">
+
+    <Grid Margin="10" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel>
+            
+            <TextBlock 
+                Text="Reports" 
+                FontSize="15"
+                FontWeight="DemiBold"        
+                x:Name="ReportsTitle" 
+                HorizontalAlignment="Center"
+                Margin="0,0,0,10"/>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    
+                    <!--Appointment Types Heading-->
+                    <TextBlock 
+                        Text="Appointment Types by Month" 
+                        FontSize="13"
+                        FontWeight="DemiBold"        
+                        x:Name="AppointmentsTypesByMonth" 
+                        HorizontalAlignment="Left"/>
+                    
+                    <!--Appointment Types Data-->
+                    <DataGrid x:Name="AppointmentTypesGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,0,20" Height="100">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="Month" Header="Month" Binding="{Binding Month}" Width="*" />
+                            <DataGridTextColumn x:Name="AppointmentType"  Header="Appointment Type" Binding="{Binding Type}" Width="*"/>
+                            <DataGridTextColumn x:Name="Count" Header="Count" Binding="{Binding Count}" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    
+                    <!--User Schedule Heading-->
+                    <TextBlock 
+                        Text="User Schedule" 
+                        FontSize="13"
+                        FontWeight="DemiBold"        
+                        x:Name="UserSchedule" 
+                        HorizontalAlignment="Left"/>
+
+                    <!--User Schedule Data-->
+                    <DataGrid x:Name="UserScheduleGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,0,20" Height="100">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="UserName" Header="User Name" Binding="{Binding UserName}" Width="*" />
+                            <DataGridTextColumn x:Name="CustomerName" Header="Customer Name" Binding="{Binding CustomerName}" Width="*" />
+                            <DataGridTextColumn x:Name="AppointmentTitle"  Header="Appointment Title" Binding="{Binding Title}" Width="*"/>
+                            <DataGridTextColumn x:Name="AppointmentStart"  Header="Start" Binding="{Binding StartTime}" Width="150"/>
+                            <DataGridTextColumn x:Name="AppointmentEnd"  Header="End" Binding="{Binding EndTime}" Width="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!--Customer Appointment Count-->
+                    <TextBlock 
+                        Text="Customer Appointment Count" 
+                        FontSize="13"
+                        FontWeight="DemiBold"        
+                        x:Name="CustomerAppointmentCount" 
+                        HorizontalAlignment="Left"/>
+
+                    <!--Customer Appointment Count Data-->
+                    <DataGrid x:Name="AppointmentCountGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,0,20" Height="100">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="CustomerNameCount" Header="Customer Name" Binding="{Binding CustomerName}" Width="*" />
+                            <DataGridTextColumn x:Name="AppointmentCount" Header="Appointment Count" Binding="{Binding AppointmentCount}" Width="150" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!--Buttons-->
+                    <Grid Grid.Row="2" HorizontalAlignment="Stretch" Margin="0,10">
+
+                        <Button 
+                            Content="Back"
+                            
+                            x:Name="BackButton"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Click="Back_Click" 
+                            Cursor="Hand" 
+                            Margin="5"  
+                            Style="{StaticResource PrimaryButton}"/>
+                    </Grid>
+
+                </StackPanel>
+            </ScrollViewer>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

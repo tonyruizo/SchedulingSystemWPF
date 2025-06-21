@@ -63,7 +63,7 @@ namespace SchedulingSystemWPF.Views
             }
             else
             {
-                MessageBox.Show(Lang.NoCustomerSelected, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Lang.NoCustomerSelected, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -86,13 +86,13 @@ namespace SchedulingSystemWPF.Views
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(string.Format(Lang.DeleteFailed, ex.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(string.Format(Lang.DeleteFailed, ex.Message), Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
             else
             {
-                MessageBox.Show(Lang.NoCustomerSelected, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Lang.NoCustomerSelected, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

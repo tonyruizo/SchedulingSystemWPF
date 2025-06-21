@@ -97,6 +97,15 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Appointment Count.
+        /// </summary>
+        public static string AppointmentCount {
+            get {
+                return ResourceManager.GetString("AppointmentCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Appointment: {0} with {1} at {2}.
         /// </summary>
         public static string AppointmentMessageFormat {
@@ -106,11 +115,38 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Appointment Type.
+        /// </summary>
+        public static string AppointmentType {
+            get {
+                return ResourceManager.GetString("AppointmentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Appointment Types by Month.
+        /// </summary>
+        public static string AppointmentTypesByMonth {
+            get {
+                return ResourceManager.GetString("AppointmentTypesByMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Appointment updated!.
         /// </summary>
         public static string AppointmentUpdated {
             get {
                 return ResourceManager.GetString("AppointmentUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
             }
         }
         
@@ -160,11 +196,38 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Count.
+        /// </summary>
+        public static string Count {
+            get {
+                return ResourceManager.GetString("Count", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer has been added!.
         /// </summary>
         public static string CustomerAdded {
             get {
                 return ResourceManager.GetString("CustomerAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer Appointment Count.
+        /// </summary>
+        public static string CustomerAppointmentCount {
+            get {
+                return ResourceManager.GetString("CustomerAppointmentCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer Name.
+        /// </summary>
+        public static string CustomerName {
+            get {
+                return ResourceManager.GetString("CustomerName", resourceCulture);
             }
         }
         
@@ -192,6 +255,33 @@ namespace SchedulingSystemWPF.Resources {
         public static string EndAfterStart {
             get {
                 return ResourceManager.GetString("EndAfterStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End Time.
+        /// </summary>
+        public static string EndTime {
+            get {
+                return ResourceManager.GetString("EndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to load reports: {0}.
+        /// </summary>
+        public static string ErrorLoadingReports {
+            get {
+                return ResourceManager.GetString("ErrorLoadingReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
             }
         }
         
@@ -268,6 +358,15 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Month.
+        /// </summary>
+        public static string Month {
+            get {
+                return ResourceManager.GetString("Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please select an appointment to edit or delete..
         /// </summary>
         public static string NoAppointmentSelected {
@@ -291,6 +390,15 @@ namespace SchedulingSystemWPF.Resources {
         public static string OverlapError {
             get {
                 return ResourceManager.GetString("OverlapError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reports.
+        /// </summary>
+        public static string ReportsTitle {
+            get {
+                return ResourceManager.GetString("ReportsTitle", resourceCulture);
             }
         }
         
@@ -322,11 +430,29 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start Time.
+        /// </summary>
+        public static string StartTime {
+            get {
+                return ResourceManager.GetString("StartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success.
         /// </summary>
         public static string SuccessTitle {
             get {
                 return ResourceManager.GetString("SuccessTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         
@@ -363,6 +489,24 @@ namespace SchedulingSystemWPF.Resources {
         public static string UserLoggedOut {
             get {
                 return ResourceManager.GetString("UserLoggedOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Name.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Schedule.
+        /// </summary>
+        public static string UserSchedule {
+            get {
+                return ResourceManager.GetString("UserSchedule", resourceCulture);
             }
         }
     }

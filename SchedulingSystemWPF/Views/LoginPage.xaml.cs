@@ -75,18 +75,18 @@ namespace SchedulingSystemWPF.Views
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(string.Format(Lang.AlertError, ex.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show(string.Format(Lang.AlertError, ex.Message), Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show(Lang.InvalidCredentials, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Lang.InvalidCredentials, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show(Lang.MissingCredentials, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Lang.MissingCredentials, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

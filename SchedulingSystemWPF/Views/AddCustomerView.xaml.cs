@@ -82,14 +82,14 @@ namespace SchedulingSystemWPF.Views
                 string.IsNullOrEmpty(postalCodeInput) ||
                 string.IsNullOrEmpty(phoneInput))
             {
-                MessageBox.Show(Lang.AllFieldsRequired, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Lang.AllFieldsRequired, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             // Validation for string type in name
             if (int.TryParse(nameInput, out _))
             {
-                MessageBox.Show(Lang.InvalidName, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Lang.InvalidName, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -97,7 +97,7 @@ namespace SchedulingSystemWPF.Views
             string phonePattern = @"^\d{7}$";
             if (!Regex.IsMatch(phoneInput, phonePattern))
             {
-                MessageBox.Show(Lang.InvalidPhoneFormat, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Lang.InvalidPhoneFormat, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -108,7 +108,7 @@ namespace SchedulingSystemWPF.Views
             if (!postalCodeInput.All(char.IsDigit) ||
                 postalCodeInput.Length > 5)
             {
-                MessageBox.Show(Lang.InvalidPostalCode, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Lang.InvalidPostalCode, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -116,7 +116,7 @@ namespace SchedulingSystemWPF.Views
             var username = SessionManager.Username;
             if (string.IsNullOrEmpty(username))
             {
-                MessageBox.Show(Lang.SessionNotFound, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Lang.SessionNotFound, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -165,7 +165,7 @@ namespace SchedulingSystemWPF.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format(Lang.SaveCustomerFailed, ex.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error); return;
+                MessageBox.Show(string.Format(Lang.SaveCustomerFailed, ex.Message), Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error); return;
             }
 
         }

@@ -66,7 +66,7 @@ namespace SchedulingSystemWPF.Views
             }
             else
             {
-                MessageBox.Show(Lang.NoAppointmentSelected, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Lang.NoAppointmentSelected, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -91,13 +91,13 @@ namespace SchedulingSystemWPF.Views
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(String.Format(Lang.DeleteFailed, ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error));
+                        MessageBox.Show(String.Format(Lang.DeleteFailed, ex.Message, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error));
                     }
                 }
             }
             else
             {
-                MessageBox.Show(Lang.NoAppointmentSelected, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Lang.NoAppointmentSelected, Lang.ErrorTitle, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

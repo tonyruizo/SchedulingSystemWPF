@@ -46,5 +46,13 @@ namespace SchedulingSystemWPF.Views
         {
             _mainContent.Content = new AddCustomerView(_mainContent);
         }
+
+        /// <summary>
+        /// View reports of appointment types by month, the schedule for each user, and the total appointments grouped by customers.
+        /// </summary>
+        private void ViewReports_Click(object sender, RoutedEventArgs e)
+        {
+            _mainContent.Content = new ReportsView(_mainContent);
+        }
     }
 }
