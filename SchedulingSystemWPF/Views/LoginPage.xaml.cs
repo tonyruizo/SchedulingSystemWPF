@@ -43,6 +43,9 @@ namespace SchedulingSystemWPF.Views
                     SessionManager.LoggedInUser = authenticatedUser;
                     SessionManager.HasAlert = false;
 
+                    // Log login activity
+                    ActivityLogger.LogActivity(username, Lang.UserLoggedIn);
+
                     // Navigate to authorized dashboard page
                     _mainFrame.Navigate(new DashboardPage(username, _mainFrame));
 

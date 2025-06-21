@@ -347,5 +347,23 @@ namespace SchedulingSystemWPF.Resources {
                 return ResourceManager.GetString("UpdateButton", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User: {0} logged in.
+        /// </summary>
+        public static string UserLoggedIn {
+            get {
+                return ResourceManager.GetString("UserLoggedIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User: {0} logged out.
+        /// </summary>
+        public static string UserLoggedOut {
+            get {
+                return ResourceManager.GetString("UserLoggedOut", resourceCulture);
+            }
+        }
     }
 }

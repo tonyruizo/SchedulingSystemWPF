@@ -33,6 +33,9 @@ namespace SchedulingSystemWPF.Views
 
             if (confirmLogout == MessageBoxResult.Yes)
             {
+                // Log logout activity
+                ActivityLogger.LogActivity(SessionManager.Username, Lang.UserLoggedOut);
+
                 SessionManager.ClearSession();
                 _mainFrame.Navigate(new LoginPage(_mainFrame));
             }

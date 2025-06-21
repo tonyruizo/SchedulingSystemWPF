@@ -213,4 +213,10 @@
   <data name="UpdateButton" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="UserLoggedIn" xml:space="preserve">
+    <value>User: {0} logged in</value>
+  </data>
+  <data name="UserLoggedOut" xml:space="preserve">
+    <value>User: {0} logged out</value>
+  </data>
 </root>
