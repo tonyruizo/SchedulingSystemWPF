@@ -279,5 +279,65 @@ namespace SchedulingSystemWPF.DatabaseAccess
 
             return appointments;
         }
+
+        public List<AppointmentsViewModel> GetAppointmentsWithinTimeRange(int userId, DateTime startUtc, DateTime endUtc)
+        {
+            List<AppointmentsViewModel> appointments = new List<AppointmentsViewModel>();
+
+            try
+            {
+                using (var conn = DbConnect.GetConnection())
+                {
+                    conn.Open();
+
+                    string cmdQuery = @"
+                        SELECT a.*, c.customerName
+                        FROM appointment a
+                        JOIN customer c ON a.customerId = c.customerId
+                        WHERE a.userId = @userId
+                        AND a.start < @EndUtc
+                        AND a.end > @StartUtc";
+
+                    using (var cmd = new MySqlCommand(cmdQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@userId", userId);
+                        cmd.Parameters.AddWithValue("@StartUtc", startUtc);
+                        cmd.Parameters.AddWithValue("@EndUtc", endUtc);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                appointments.Add(new AppointmentsViewModel
+                                {
+                                    AppointmentId = reader.GetInt32("appointmentId"),
+                                    CustomerId = reader.GetInt32("customerId"),
+                                    CustomerName = reader.GetString("customerName"),
+                                    UserId = reader.GetInt32("userId"),
+                                    Title = reader.GetString("title"),
+                                    Description = reader.GetString("description"),
+                                    Location = reader.GetString("location"),
+                                    Contact = reader.GetString("contact"),
+                                    Type = reader.GetString("type"),
+                                    Url = reader.GetString("url"),
+                                    Start = reader.GetDateTime("start"),
+                                    End = reader.GetDateTime("end"),
+                                    CreateDate = reader.GetDateTime("createDate"),
+                                    CreatedBy = reader.GetString("createdBy"),
+                                    LastUpdate = reader.GetDateTime("lastUpdate"),
+                                    LastUpdateBy = reader.GetString("lastUpdateBy")
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to retrieve overlapping appointments: {ex.Message}");
+            }
+
+            return appointments;
+        }
     }
 }

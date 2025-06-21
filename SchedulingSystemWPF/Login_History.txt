@@ -1,2 +1,8 @@
 6/20/2025 8:25 PM: User: tony logged in
 6/20/2025 8:26 PM: User: tony logged out
+20/06/2025 20:34: Usuario: test inició sesión
+20/06/2025 20:38: Usuario: test cerró sesión
+20/06/2025 20:39: Usuario: test inició sesión
+20/06/2025 20:39: Usuario: test cerró sesión
+6/20/2025 9:23 PM: User: tony logged in
+6/20/2025 9:27 PM: User: tony logged out

@@ -185,7 +185,7 @@ namespace SchedulingSystemWPF.Views
             {
                 var startUtc = startDateTime.ToUniversalTime();
                 var endUtc = endDateTime.ToUniversalTime();
-                var overlappingAppointments = appointmentR.GetUpcomingAppointments(userId, startUtc, endUtc);
+                var overlappingAppointments = appointmentR.GetAppointmentsWithinTimeRange(userId, startUtc, endUtc);
 
                 if (_isEditMode)
                 {
