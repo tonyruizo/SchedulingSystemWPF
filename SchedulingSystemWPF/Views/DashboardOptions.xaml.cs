@@ -48,6 +48,14 @@ namespace SchedulingSystemWPF.Views
         }
 
         /// <summary>
+        /// View appointments in a calendar data grid.
+        /// </summary>
+        private void ViewCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            _mainContent.Content = new CalendarView(_mainContent);
+        }
+
+        /// <summary>
         /// View reports of appointment types by month, the schedule for each user, and the total appointments grouped by customers.
         /// </summary>
         private void ViewReports_Click(object sender, RoutedEventArgs e)

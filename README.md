@@ -18,14 +18,13 @@ An organization named “Global Consulting Agency” requires the development of a b
 - Encapsulation
 - Try-catch Exception Handling
 - UI Validations
-- *More Details coming soon.*
+- Localizations 
 
 #### In App Features:
 - Login authentication
-- Determine a user's location
 - Add, update, delete,and view data for customers and appointments
 - Automatically adjust appointment times based on user time zones and daylight saving time
-- Generate Reports
+- Generate Reports page
 - .txt file that logs timestamp and username for each login
 - Calendar View
 

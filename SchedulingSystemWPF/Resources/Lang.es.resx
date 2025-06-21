@@ -145,10 +145,13 @@
     <value>¡Cita actualizada!</value>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>Atras</value>
+    <value>Volver</value>
   </data>
   <data name="BusinessHoursError" xml:space="preserve">
     <value>Las citas deben programarse entre las 9:00 y las 17:00 EST, de lunes a viernes.</value>
+  </data>
+  <data name="CalendarTitle" xml:space="preserve">
+    <value>Calendario</value>
   </data>
   <data name="ConfirmDelete" xml:space="preserve">
     <value>¿Estás seguro de que quieres eliminar esto?</value>
@@ -186,6 +189,9 @@
   <data name="EndTime" xml:space="preserve">
     <value>Hora de fin</value>
   </data>
+  <data name="ErrorLoadingCalendar" xml:space="preserve">
+    <value>No se pudo cargar el calendario: {0}</value>
+  </data>
   <data name="ErrorLoadingReports" xml:space="preserve">
     <value>No se pudieron cargar los informes: {0}</value>
   </data>
@@ -219,6 +225,9 @@
   <data name="Month" xml:space="preserve">
     <value>Mes</value>
   </data>
+  <data name="MonthView" xml:space="preserve">
+    <value>Vista Mensual</value>
+  </data>
   <data name="NoAppointmentSelected" xml:space="preserve">
     <value>Por favor, seleccione la cita para editar o eliminar.</value>
   </data>
@@ -247,7 +256,7 @@
     <value>Éxito</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Titolo</value>
+    <value>Título</value>
   </data>
   <data name="UpcomingAppointments" xml:space="preserve">
     <value>Citas próximas dentro de 15 minutos:</value>
@@ -266,5 +275,8 @@
   </data>
   <data name="UserSchedule" xml:space="preserve">
     <value>Horario de usuarios</value>
+  </data>
+  <data name="WeekView" xml:space="preserve">
+    <value>Vistal Semanal</value>
   </data>
 </root>

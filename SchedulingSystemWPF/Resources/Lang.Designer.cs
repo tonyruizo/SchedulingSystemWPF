@@ -160,6 +160,15 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calendar.
+        /// </summary>
+        public static string CalendarTitle {
+            get {
+                return ResourceManager.GetString("CalendarTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete this?.
         /// </summary>
         public static string ConfirmDelete {
@@ -268,6 +277,15 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to load calendar: {0}.
+        /// </summary>
+        public static string ErrorLoadingCalendar {
+            get {
+                return ResourceManager.GetString("ErrorLoadingCalendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to load reports: {0}.
         /// </summary>
         public static string ErrorLoadingReports {
@@ -363,6 +381,15 @@ namespace SchedulingSystemWPF.Resources {
         public static string Month {
             get {
                 return ResourceManager.GetString("Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Month View.
+        /// </summary>
+        public static string MonthView {
+            get {
+                return ResourceManager.GetString("MonthView", resourceCulture);
             }
         }
         
@@ -507,6 +534,15 @@ namespace SchedulingSystemWPF.Resources {
         public static string UserSchedule {
             get {
                 return ResourceManager.GetString("UserSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Week View.
+        /// </summary>
+        public static string WeekView {
+            get {
+                return ResourceManager.GetString("WeekView", resourceCulture);
             }
         }
     }
