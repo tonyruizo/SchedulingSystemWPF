@@ -67,8 +67,13 @@ namespace SchedulingSystemWPF.Views
                 var localTimeZone = TimeZoneInfo.Local;
                 CultureInfo culture = CultureInfo.CurrentUICulture;
 
-                // Filter appointments by month or week using lambda
+                // Lambda Expression:
+                // Filter appointments by month or week using lambda Expression
                 var filteredAppointments = appointments
+                    // Filter appointment based on the selected view mode
+                    // AllAppointments: Includes all appointments(no date filter)
+                    // Month: Includes appointments in the current year and month
+                    // Week: Includes appointments within the current week (Sunday to Saturday)
                     .Where(a => _currentViewMode == ViewMode.AllAppointments ||
                                 (_currentViewMode == ViewMode.Month &&
                                  a.StartLocal.Year == _currentDate.Year &&
@@ -76,6 +81,8 @@ namespace SchedulingSystemWPF.Views
                                 (_currentViewMode == ViewMode.Week &&
                                  a.StartLocal.Date >= _currentDate.AddDays(-(int)_currentDate.DayOfWeek) &&
                                  a.StartLocal.Date <= _currentDate.AddDays(6 - (int)_currentDate.DayOfWeek)))
+                    // Projects each appointment into an anonymous object with relevant fields
+                    // Selects UserName, CustomerName, Title, and localized/formatted StartTime and EndTime
                     .Select(a => new
                     {
                         UserName = a.UserName,
@@ -84,6 +91,7 @@ namespace SchedulingSystemWPF.Views
                         StartTime = a.StartLocal.ToString(culture.DateTimeFormat.ShortDatePattern + " " + culture.DateTimeFormat.ShortTimePattern),
                         EndTime = a.EndLocal.ToString(culture.DateTimeFormat.ShortDatePattern + " " + culture.DateTimeFormat.ShortTimePattern)
                     })
+                    // Sorts appointments by StartTime in ascending order
                     .OrderBy(a => a.StartTime)
                     .ToList();
 
