@@ -38,7 +38,7 @@ An organization named “Global Consulting Agency” requires the development of a b
 
 | Login Screen | Login Screen (Localized for ES) | Dashboard |
 |-----------|------------------|------------------|
-| ![LoginScreen](screenshots/loginScreen.png) | ![LoginScreenEs](screenshots/LoginScreenEs.png) | ![dashboard](screenshots/dashboard.png) |
+| ![LoginScreen](screenshots/loginScreen.png) | ![loginScreenEs](screenshots/loginScreenEs.png) | ![dashboard](screenshots/dashboard.png) |
 
 <br>
 
