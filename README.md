@@ -19,13 +19,13 @@ An organization named “Global Consulting Agency” requires the development of a b
 - UI Validations for input fields
 - Localization (Login page automatically localizes to English or Spanish based on system settings)
 
-#### In App Features:
-- Login Authentication: Validates user credentials
-- Customer and Appointment Management: Add, update, delete,and view data
-- Time Zone Support: Adjusts appointment times to user’s local time zone
-- Reports: Generates reports (e.g., appointment types by month, user schedules)
-- Activity Logging: Records login activity
-- Calendar View: Displays appointments in a `DataGrid` with month/week toggle
+#### In-App Features:
+- **Login Authentication**: Validates user credentials
+- **Customer and Appointment Management**: Add, update, delete,and view data
+- **Time Zone Support**: Adjusts appointment times to user’s local time zone
+- **Reports**: Generates reports (e.g., appointment types by month, user schedules)
+- **Activity Logging**: Records login activity
+- **Calendar View**: Displays appointments in a `DataGrid` with month/week toggle
 
 <br>
 
