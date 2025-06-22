@@ -219,6 +219,21 @@
   <data name="InvalidUrl" xml:space="preserve">
     <value>Please enter a valid URL (e.g., https://example.com).</value>
   </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginDescription1" xml:space="preserve">
+    <value>Only authorized users.</value>
+  </data>
+  <data name="LoginDescription2" xml:space="preserve">
+    <value>Please enter your login username and password.</value>
+  </data>
+  <data name="LoginSubTitle" xml:space="preserve">
+    <value>Schedule System</value>
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Global Consulting Agency</value>
+  </data>
   <data name="MissingCredentials" xml:space="preserve">
     <value>Please fill out BOTH username and password.</value>
   </data>
@@ -236,6 +251,9 @@
   </data>
   <data name="OverlapError" xml:space="preserve">
     <value>This appointment overlaps with an existing appointment.</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="ReportsTitle" xml:space="preserve">
     <value>Reports</value>
@@ -272,6 +290,9 @@
   </data>
   <data name="UserName" xml:space="preserve">
     <value>User Name</value>
+  </data>
+  <data name="UsernameLabel" xml:space="preserve">
+    <value>Username</value>
   </data>
   <data name="UserSchedule" xml:space="preserve">
     <value>User Schedule</value>

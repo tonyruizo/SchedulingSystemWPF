@@ -367,6 +367,51 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string LoginButton {
+            get {
+                return ResourceManager.GetString("LoginButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only authorized users..
+        /// </summary>
+        public static string LoginDescription1 {
+            get {
+                return ResourceManager.GetString("LoginDescription1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your login username and password..
+        /// </summary>
+        public static string LoginDescription2 {
+            get {
+                return ResourceManager.GetString("LoginDescription2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedule System.
+        /// </summary>
+        public static string LoginSubTitle {
+            get {
+                return ResourceManager.GetString("LoginSubTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global Consulting Agency.
+        /// </summary>
+        public static string LoginTitle {
+            get {
+                return ResourceManager.GetString("LoginTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please fill out BOTH username and password..
         /// </summary>
         public static string MissingCredentials {
@@ -417,6 +462,15 @@ namespace SchedulingSystemWPF.Resources {
         public static string OverlapError {
             get {
                 return ResourceManager.GetString("OverlapError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string PasswordLabel {
+            get {
+                return ResourceManager.GetString("PasswordLabel", resourceCulture);
             }
         }
         
@@ -525,6 +579,15 @@ namespace SchedulingSystemWPF.Resources {
         public static string UserName {
             get {
                 return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string UsernameLabel {
+            get {
+                return ResourceManager.GetString("UsernameLabel", resourceCulture);
             }
         }
         

@@ -219,6 +219,21 @@
   <data name="InvalidUrl" xml:space="preserve">
     <value>Por favor, ingrese una URL válida (e.g., https://example.com).</value>
   </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="LoginDescription1" xml:space="preserve">
+    <value>Solo usuarios autorizados.</value>
+  </data>
+  <data name="LoginDescription2" xml:space="preserve">
+    <value>Por favor, ingrese su nombre de usuario y contraseña.</value>
+  </data>
+  <data name="LoginSubTitle" xml:space="preserve">
+    <value>Sistema de Programación</value>
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Agencia de Consultoría Global</value>
+  </data>
   <data name="MissingCredentials" xml:space="preserve">
     <value>Por favor, complete AMBOS el nombre de usuario y la contraseña.</value>
   </data>
@@ -236,6 +251,9 @@
   </data>
   <data name="OverlapError" xml:space="preserve">
     <value>Esta cita se superpone con una cita existente.</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Contraseña</value>
   </data>
   <data name="ReportsTitle" xml:space="preserve">
     <value>Informes</value>
@@ -271,6 +289,9 @@
     <value>Usuario: {0} cerró sesión</value>
   </data>
   <data name="UserName" xml:space="preserve">
+    <value>Nombre de usuario</value>
+  </data>
+  <data name="UsernameLabel" xml:space="preserve">
     <value>Nombre de usuario</value>
   </data>
   <data name="UserSchedule" xml:space="preserve">

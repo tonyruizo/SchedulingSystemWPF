@@ -20,6 +20,22 @@ namespace SchedulingSystemWPF.Views
         {
             InitializeComponent();
             _mainFrame = mainFrame;
+
+            SetLocalizedStrings();
+        }
+
+        /// <summary>
+        /// Set Localization
+        /// </summary>
+        private void SetLocalizedStrings()
+        {
+            LoginTitle.Text = Lang.LoginTitle;
+            LoginSubTitle.Text = Lang.LoginSubTitle;
+            LoginDescription1.Text = Lang.LoginDescription1;
+            LoginDescription2.Text = Lang.LoginDescription2;
+            UsernameLabel.Text = Lang.UsernameLabel;
+            PasswordLabel.Text = Lang.PasswordLabel;
+            LoginButton.Content = Lang.LoginButton;
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)

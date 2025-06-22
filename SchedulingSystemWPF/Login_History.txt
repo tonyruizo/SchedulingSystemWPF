@@ -27,3 +27,7 @@
 6/21/2025 7:21 PM: User: test logged out
 6/21/2025 7:21 PM: User: tony logged in
 6/21/2025 7:24 PM: User: tony logged out
+6/21/2025 8:34 PM: User: test logged in
+6/21/2025 8:34 PM: User: test logged out
+21/06/2025 20:36: Usuario: tony inició sesión
+21/06/2025 20:36: Usuario: tony cerró sesión

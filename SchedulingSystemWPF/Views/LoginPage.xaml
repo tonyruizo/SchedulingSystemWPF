@@ -10,33 +10,34 @@
 
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
         <!--Heading-->
-        <TextBlock Text="Global Consulting Agency" 
-                   FontSize="24" 
-                   FontWeight="Bold" 
-                   Margin="0,0,0,5" 
-                   HorizontalAlignment="Center"/>
+        <TextBlock 
+            Text="Global Consulting Agency"
+            x:Name="LoginTitle"
+            FontSize="24" 
+            FontWeight="Bold" 
+            Margin="0,0,0,5" 
+            HorizontalAlignment="Center"/>
 
         <!--SubHeading-->
-        <TextBlock Text="Schedule System" 
-           FontSize="18" 
-           FontWeight="Bold" 
-           Margin="0,0,0,35" 
-           HorizontalAlignment="Center"/>
+        <TextBlock 
+            Text="Schedule System"
+            x:Name="LoginSubTitle"
+            FontSize="18" 
+            FontWeight="Bold" 
+            Margin="0,0,0,35" 
+            HorizontalAlignment="Center"/>
 
         <!--Description-->
-        <TextBlock FontSize="15" Margin="0,0,0,40" HorizontalAlignment="Center" TextAlignment="Center">
-            Only authorized users.
-            <LineBreak />
-            Please enter your login username and password.
-        </TextBlock>
+        <TextBlock x:Name="LoginDescription1" FontSize="15" Text="Only authorized users."  HorizontalAlignment="Center" TextAlignment="Center" />
+        <TextBlock x:Name="LoginDescription2" FontSize="15" Text=" Please enter your login username and password." HorizontalAlignment="Center" TextAlignment="Center" Margin="0,0, 0, 40" />
 
         <!--Login form-->
         <StackPanel Width="250">
-            <TextBlock Text="Username"/>
+            <TextBlock Text="Username" x:Name="UsernameLabel" />
             <TextBox x:Name="UsernameBox" Margin="0,0,0,10"/>
-            <TextBlock Text="Password"/>
+            <TextBlock Text="Password" x:Name="PasswordLabel"/>
             <PasswordBox x:Name="PasswordBox" Margin="0,0,0,10"/>
-            <Button Content="Login" Margin="0,0,0,10" Click="Login_Click" Cursor="Hand" Style="{StaticResource PrimaryButton}"/>
+            <Button Content="Login" x:Name="LoginButton" Margin="0,0,0,10" Click="Login_Click" Cursor="Hand" Style="{StaticResource PrimaryButton}"/>
         </StackPanel>
     </StackPanel>
 </Page>
