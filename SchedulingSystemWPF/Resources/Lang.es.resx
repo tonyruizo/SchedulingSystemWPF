@@ -120,6 +120,9 @@
   <data name="AlertError" xml:space="preserve">
     <value>No se pudo verificar las citas próximas: {0}</value>
   </data>
+  <data name="AllAppointments" xml:space="preserve">
+    <value>Todas las Citas</value>
+  </data>
   <data name="AllFieldsRequired" xml:space="preserve">
     <value>Todos los campos deben estar llenos.</value>
   </data>

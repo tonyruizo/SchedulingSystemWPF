@@ -120,6 +120,9 @@
   <data name="AlertError" xml:space="preserve">
     <value>Failed to check upcoming appointments: {0}</value>
   </data>
+  <data name="AllAppointments" xml:space="preserve">
+    <value>All Appointments</value>
+  </data>
   <data name="AllFieldsRequired" xml:space="preserve">
     <value>All fields must be filled.</value>
   </data>
