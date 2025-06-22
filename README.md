@@ -5,8 +5,8 @@ This is a windows scheduling desktop user interface application built with .NET 
 An organization named “Global Consulting Agency” requires the development of a business Windows desktop application, utilizing their existing database.
 
 #### Notes:
-1. This application was developed for a **school project** with **Visual Studio 2022** on a **Windows 11 (Virtual Machine)** using **Parallels Desktop** on a **Macbook**.
-2. This project uses a local MySQL connection defined in `App.config`.
+1. Developed as a **school project** using **Visual Studio 2022** on a **Windows 11 (Virtual Machine)** via **Parallels Desktop** on a **Macbook**.
+2. Uses a local MySQL connection defined in `App.config`. Update the connection string (e.g., server, username, password) to match your MySQL setup.
 
 #### Technologies Used:
 - **C#**, **WPF APP (.NET Framework 4.7.2)**, **ADO.NET** and **MySQL**. 
@@ -15,18 +15,17 @@ An organization named “Global Consulting Agency” requires the development of a b
 ## Features
 -  **MVVM** (Model-View-ViewModel) Architecture
 - Low-Level Data Access with **ADO.NET** using SQL Queries
-- Encapsulation
-- Try-catch Exception Handling
-- UI Validations
-- Localizations 
+- Encapsulation and try-catch exception Handling
+- UI Validations for input fields
+- Localization (Login page automatically localizes to English or Spanish based on system settings)
 
 #### In App Features:
-- Login authentication
-- Add, update, delete,and view data for customers and appointments
-- Automatically adjust appointment times based on user time zones and daylight saving time
-- Generate Reports page
-- .txt file that logs timestamp and username for each login
-- Calendar View
+- Login Authentication: Validates user credentials
+- Customer and Appointment Management: Add, update, delete,and view data
+- Time Zone Support: Adjusts appointment times to user’s local time zone
+- Reports: Generates reports (e.g., appointment types by month, user schedules)
+- Activity Logging: Records login activity
+- Calendar View: Displays appointments in a `DataGrid` with month/week toggle
 
 <br>
 
@@ -37,7 +36,15 @@ An organization named “Global Consulting Agency” requires the development of a b
 
 <br>
 
+| Login Screen | Login Screen (Localized for ES) | Dashboard |
+|-----------|------------------|------------------|
+| ![LoginScreen](screenshots/loginScreen.png) | ![LoginScreenEs](screenshots/LoginScreenEs.png) | ![dashboard](screenshots/dashboard.png) |
 
+<br>
+
+| History Report | Add Appointment | View Customers |
+|-----------|------------------|------------------|
+| ![HistoryReport](screenshots/HistoryReport.png) | ![AddAppointment](screenshots/AddAppointment.png) | ![ViewCustomers](screenshots/ViewCustomers.png) |
 
 
 ### Author
