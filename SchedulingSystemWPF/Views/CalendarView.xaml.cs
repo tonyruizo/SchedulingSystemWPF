@@ -15,7 +15,8 @@ namespace SchedulingSystemWPF.Views
     {
         private readonly ContentControl _parentContainer;
         private readonly AppointmentRepository _appointmentRepo = new AppointmentRepository();
-        private bool _isMonthView = true;
+        private enum ViewMode { AllAppointments, Month, Week }
+        private ViewMode _currentViewMode = ViewMode.AllAppointments;
         private DateTime _currentDate = DateTime.Today;
         public CalendarView(ContentControl parentContainer)
         {
@@ -24,6 +25,7 @@ namespace SchedulingSystemWPF.Views
 
             // Localization
             CalendarTitle.Text = Lang.CalendarTitle;
+            AllAppointmentsViewRadio.Content = Lang.AllAppointments;
             MonthViewRadio.Content = Lang.MonthView;
             WeekViewRadio.Content = Lang.WeekView;
             UserName.Header = Lang.UserName;
@@ -33,7 +35,7 @@ namespace SchedulingSystemWPF.Views
             EndTime.Header = Lang.EndTime;
             Back.Content = Lang.Back;
 
-            MonthViewRadio.IsChecked = true;
+            AllAppointmentsViewRadio.IsChecked = true;
             UpdatePeriodDisplay();
             LoadAppointments();
         }
@@ -41,7 +43,11 @@ namespace SchedulingSystemWPF.Views
         private void UpdatePeriodDisplay()
         {
             CultureInfo culture = CultureInfo.CurrentUICulture;
-            if (_isMonthView)
+            if (_currentViewMode == ViewMode.AllAppointments)
+            {
+                CurrentPeriod.Text = Lang.AllAppointments;
+            }
+            else if (_currentViewMode == ViewMode.Month)
             {
                 CurrentPeriod.Text = _currentDate.ToString("MMMM yyyy", culture);
             }
@@ -63,10 +69,13 @@ namespace SchedulingSystemWPF.Views
 
                 // Filter appointments by month or week using lambda
                 var filteredAppointments = appointments
-                    .Where(a => _isMonthView
-                        ? a.StartLocal.Year == _currentDate.Year && a.StartLocal.Month == _currentDate.Month
-                        : a.StartLocal.Date >= _currentDate.AddDays(-(int)_currentDate.DayOfWeek) &&
-                          a.StartLocal.Date <= _currentDate.AddDays(6 - (int)_currentDate.DayOfWeek))
+                    .Where(a => _currentViewMode == ViewMode.AllAppointments ||
+                                (_currentViewMode == ViewMode.Month &&
+                                 a.StartLocal.Year == _currentDate.Year &&
+                                 a.StartLocal.Month == _currentDate.Month) ||
+                                (_currentViewMode == ViewMode.Week &&
+                                 a.StartLocal.Date >= _currentDate.AddDays(-(int)_currentDate.DayOfWeek) &&
+                                 a.StartLocal.Date <= _currentDate.AddDays(6 - (int)_currentDate.DayOfWeek)))
                     .Select(a => new
                     {
                         UserName = a.UserName,
@@ -88,7 +97,18 @@ namespace SchedulingSystemWPF.Views
 
         private void ViewToggle_Checked(object sender, RoutedEventArgs e)
         {
-            _isMonthView = MonthViewRadio.IsChecked == true;
+            if (AllAppointmentsViewRadio.IsChecked == true)
+            {
+                _currentViewMode = ViewMode.AllAppointments;
+            }
+            else if (MonthViewRadio.IsChecked == true)
+            {
+                _currentViewMode = ViewMode.Month;
+            }
+            else if (WeekViewRadio.IsChecked == true)
+            {
+                _currentViewMode = ViewMode.Week;
+            }
             UpdatePeriodDisplay();
             LoadAppointments();
         }

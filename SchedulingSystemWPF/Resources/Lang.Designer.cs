@@ -70,6 +70,15 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Appointments.
+        /// </summary>
+        public static string AllAppointments {
+            get {
+                return ResourceManager.GetString("AllAppointments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All fields must be filled..
         /// </summary>
         public static string AllFieldsRequired {

@@ -20,6 +20,7 @@
             HorizontalAlignment="Center"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <RadioButton x:Name="AllAppointmentsViewRadio" GroupName="ViewToggle" Margin="0,0,10,0" Checked="ViewToggle_Checked"/>
             <RadioButton x:Name="MonthViewRadio" GroupName="ViewToggle" Margin="0,0,10,0" Checked="ViewToggle_Checked"/>
             <RadioButton x:Name="WeekViewRadio" GroupName="ViewToggle" Margin="0,0,10,0" Checked="ViewToggle_Checked"/>
             <TextBlock x:Name="CurrentPeriod" Margin="50,0,0,0" Text="placeholder" FontSize="13" FontWeight="DemiBold" VerticalAlignment="Center"/>
