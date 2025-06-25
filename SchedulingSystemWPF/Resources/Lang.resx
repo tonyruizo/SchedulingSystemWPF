@@ -222,6 +222,9 @@
   <data name="InvalidUrl" xml:space="preserve">
     <value>Please enter a valid URL (e.g., https://example.com).</value>
   </data>
+  <data name="LocationDisplay" xml:space="preserve">
+    <value>Location: {0}</value>
+  </data>
   <data name="LoginButton" xml:space="preserve">
     <value>Login</value>
   </data>

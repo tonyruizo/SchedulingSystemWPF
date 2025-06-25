@@ -36,6 +36,8 @@ namespace SchedulingSystemWPF.Views
             UsernameLabel.Text = Lang.UsernameLabel;
             PasswordLabel.Text = Lang.PasswordLabel;
             LoginButton.Content = Lang.LoginButton;
+
+            LocationLabel.Text = string.Format(Lang.LocationDisplay, TimeZoneInfo.Local.DisplayName);
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)

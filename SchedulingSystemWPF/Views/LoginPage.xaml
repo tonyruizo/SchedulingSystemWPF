@@ -31,6 +31,9 @@
         <TextBlock x:Name="LoginDescription1" FontSize="15" Text="Only authorized users."  HorizontalAlignment="Center" TextAlignment="Center" />
         <TextBlock x:Name="LoginDescription2" FontSize="15" Text=" Please enter your login username and password." HorizontalAlignment="Center" TextAlignment="Center" Margin="0,0, 0, 40" />
 
+        <!--Location Display-->
+        <TextBlock x:Name="LocationLabel" FontSize="12" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+        
         <!--Login form-->
         <StackPanel Width="250">
             <TextBlock Text="Username" x:Name="UsernameLabel" />

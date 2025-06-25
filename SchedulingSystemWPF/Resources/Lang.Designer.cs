@@ -376,6 +376,15 @@ namespace SchedulingSystemWPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location: {0}.
+        /// </summary>
+        public static string LocationDisplay {
+            get {
+                return ResourceManager.GetString("LocationDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string LoginButton {
