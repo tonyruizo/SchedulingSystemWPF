@@ -1,11 +1,15 @@
 # Scheduling System (WPF Application)
 This is a windows scheduling desktop user interface application built with .NET **Windows Presentation Foundation (WPF)** framework.
 
-#### Scenario:
-An organization named ìGlobal Consulting Agencyî requires the development of a business Windows desktop application, utilizing their existing database.
+> **Note:**
+> The scenario, project idea, and chosen technologies (framework) all originate from my course at the university.
+> My task is to completely build the project from the gathered requirements, and pass the evaluation. 
 
-#### Notes:
-1. Developed as a **school project** using **Visual Studio 2022** on a **Windows 11 (Virtual Machine)** via **Parallels Desktop** on a **Macbook**.
+#### Scenario:
+An organization named ‚ÄúGlobal Consulting Agency‚Äù requires the development of a business Windows desktop application, utilizing their existing database.
+
+#### Additional Notes:
+1. The project is developed using **Visual Studio 2022** on a **Windows 11 (Virtual Machine)** via **Parallels Desktop** on a **Macbook**.
 2. Uses a local MySQL connection defined in `App.config`. Update the connection string (e.g., server, username, password) to match your MySQL setup.
 
 #### Technologies Used:
@@ -22,7 +26,7 @@ An organization named ìGlobal Consulting Agencyî requires the development of a b
 #### In-App Features:
 - **Login Authentication**: Validates user credentials
 - **Customer and Appointment Management**: Add, update, delete,and view data
-- **Time Zone Support**: Adjusts appointment times to userís local time zone
+- **Time Zone Support**: Adjusts appointment times to user‚Äôs local time zone
 - **Reports**: Generates reports (e.g., appointment types by month, user schedules)
 - **Activity Logging**: Records login activity
 - **Calendar View**: Displays appointments in a `DataGrid` with month/week toggle
